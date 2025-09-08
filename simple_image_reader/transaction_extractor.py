@@ -6,7 +6,7 @@ from datetime import datetime
 import logging
 from pathlib import Path
 
-from config import SimpleConfig
+from .config import SimpleConfig
 
 logger = logging.getLogger(__name__)
 

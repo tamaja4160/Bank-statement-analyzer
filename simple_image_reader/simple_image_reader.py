@@ -6,9 +6,9 @@ from pathlib import Path
 import logging
 import json
 
-from config import SimpleConfig
-from ocr_processor import SimpleOCRProcessor
-from transaction_extractor import SimpleTransactionExtractor
+from .config import SimpleConfig
+from .ocr_processor import SimpleOCRProcessor
+from .transaction_extractor import SimpleTransactionExtractor
 
 logger = logging.getLogger(__name__)
 

@@ -7,7 +7,7 @@ from typing import List, Tuple
 import logging
 from pathlib import Path
 
-from config import SimpleConfig
+from .config import SimpleConfig
 
 logger = logging.getLogger(__name__)
 
@@ -17,7 +17,9 @@ class SimpleOCRProcessor:
     def __init__(self, config: SimpleConfig):
         """Initialize the OCR processor."""
         self.config = config
+        # Set tesseract command path
         pytesseract.pytesseract.tesseract_cmd = config.tesseract_cmd
+        print(f"Setting Tesseract path to: {config.tesseract_cmd}")
 
     def preprocess_image(self, image_path: Path) -> List[np.ndarray]:
         """
