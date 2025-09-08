@@ -260,6 +260,33 @@ def display_warning_message(message: str):
     """
     st.warning(f"⚠️ {message}")
 
+def display_processing_error(operation: str, error: str = None):
+    """
+    Display a standardized error message for processing failures.
+
+    Args:
+        operation: The operation that failed (e.g., "generation", "OCR processing")
+        error: Optional specific error details
+    """
+    message = f"❌ Failed to complete {operation}."
+    if error:
+        message += f" Error: {error}"
+    message += " Please try again or contact support if the issue persists."
+    st.error(message)
+
+def display_processing_success(operation: str, next_step: str = None):
+    """
+    Display a standardized success message for processing completions.
+
+    Args:
+        operation: The operation that succeeded (e.g., "statement generation")
+        next_step: Optional guidance for the next step
+    """
+    message = f"✅ Successfully completed {operation}!"
+    if next_step:
+        message += f" Next: {next_step}"
+    st.success(message)
+
 def display_deal_comparison_results(deal_analysis: Dict):
     """
     Display detailed deal comparison results.

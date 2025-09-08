@@ -1,6 +1,6 @@
-# Bank Statement Analyzer
+# BillWise: Recurring Payments
 
-A comprehensive solution for bank statement analysis with both **Streamlit Web Application** and **FastAPI REST Service** that generates bank statements, extracts transaction data using OCR, and identifies recurring payments for financial analysis.
+Discover, track, and save on recurring costs. A comprehensive solution for bank statement analysis with both **Streamlit Web Application** and **FastAPI REST Service** that generates bank statements, extracts transaction data using OCR, and identifies recurring payments for financial analysis.
 
 ## Features
 

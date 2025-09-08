@@ -21,6 +21,8 @@ from display_helpers import (
     display_statement_with_extractions,
     display_analysis_results,
     display_deal_comparison_results,
+    display_processing_error,
+    display_processing_success,
 )
 
 # Import the existing simple_image_reader
@@ -34,8 +36,8 @@ from simple_image_reader.simple_image_reader import SimpleImageReader
 
 # Configure page
 st.set_page_config(
-    page_title="Bank Statement Analyzer",
-    page_icon="🏦",
+    page_title="BillWise: Recurring Payments",
+    page_icon="💡",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -47,10 +49,28 @@ def main():
     """Main application function."""
 
     # Header
-    st.title("🏦 Bank Statement Analyzer")
+    st.title("💡 BillWise: Recurring Payments")
     st.markdown("""
-    Generate bank statements, extract transaction data, and identify recurring payments.
+    Discover, track, and save on recurring costs.
     """)
+
+    # Onboarding and Help
+    with st.expander("🚀 Quick Start Guide & Privacy", expanded=False):
+        col1, col2 = st.columns(2)
+        with col1:
+            st.markdown("""
+            **How it works:**
+            1. **Get Statements** - Generate sample statements
+            2. **Analyze** - Find recurring payments and savings opportunities
+            3. **Save Money** - Get recommendations to reduce costs (up to multiple 1000s of € per year!)
+            """)
+        with col2:
+            st.markdown("""
+            **Need help?**
+            - **Bank statements not generated?** Try rerunning the generation step
+            - **Missing transactions?** Check image quality and try enhanced OCR
+            - **Recurring payments?** These are payments that appear regularly (e.g., monthly bills)
+            """)
 
     # Apply larger fonts for all tables (Extracted Transactions, Recurring Payment Analysis, etc.)
     apply_global_styles(table_font_px=18)
@@ -77,9 +97,23 @@ def main():
         # Action buttons
         col1, col2 = st.columns(2)
         with col1:
-            generate_button = st.button("🚀 Generate Statements", type="primary")
+            generate_button = st.button(
+                "🚀 Generate Statements",
+                type="primary",
+                disabled=not user_name.strip(),
+                help="Enter your name first to generate personalized statements"
+            )
         with col2:
             ocr_button = st.button("🔍 Process with OCR", disabled=not session_manager.get_image_paths())
+
+        # Reset session button
+        st.markdown("---")
+        if st.button("🔄 Reset Session", type="secondary", help="Clear all data and start over"):
+            session_manager.clear_session()
+            # Clear session state
+            st.session_state.clear()
+            st.success("✅ Session reset! Start fresh with new data.")
+            st.rerun()
 
     # Main content area
     if generate_button and user_name.strip():
@@ -87,7 +121,7 @@ def main():
             success = generate_statements_only(user_name.strip(), num_statements)
 
             if success:
-                st.success(f"✅ Successfully generated {num_statements} statements!")
+                st.success("✅ Successfully generated statements! Next: Process with OCR to extract transactions.")
                 st.rerun()  # Refresh to enable OCR button
             else:
                 st.error("❌ Failed to generate statements. Please try again.")
@@ -97,7 +131,7 @@ def main():
             success = process_ocr_only()
 
             if success:
-                st.success("✅ Successfully processed images with OCR!")
+                st.success("✅ Successfully processed images! Next: Analyze recurring payments to find savings.")
                 st.rerun()  # Refresh to show results
             else:
                 st.error("❌ Failed to process images with OCR. Please try again.")
@@ -110,11 +144,14 @@ def main():
     if session_manager.has_results():
         display_results_section()
 
-        # Enable analysis button if we have data
-        if st.sidebar.button("📊 Analyze Recurring Payments", type="secondary"):
-            # Persist analysis view across reruns
-            st.session_state.show_analysis = True
-            st.rerun()
+        # Enable analysis button if we have data - moved to main area
+        st.markdown("---")
+        col1, col2, col3 = st.columns([1, 2, 1])
+        with col2:
+            if st.button("📊 Analyze Recurring Payments", type="primary", use_container_width=True):
+                # Persist analysis view across reruns
+                st.session_state.show_analysis = True
+                st.rerun()
 
         # Render analysis if user previously triggered it
         if st.session_state.get('show_analysis', False):
@@ -129,7 +166,7 @@ def generate_statements_only(name: str, num_statements: int) -> bool:
         image_paths = generate_statements_for_name(name, num_statements)
 
         if not image_paths:
-            st.error("Failed to generate statements")
+            display_processing_error("statement generation")
             return False
 
         progress_bar.progress(100)
@@ -141,7 +178,7 @@ def generate_statements_only(name: str, num_statements: int) -> bool:
         return True
 
     except Exception as e:
-        st.error(f"Error during generation: {str(e)}")
+        display_processing_error("statement generation", str(e))
         return False
 
 def process_ocr_only() -> bool:
@@ -151,7 +188,7 @@ def process_ocr_only() -> bool:
         image_paths = session_manager.get_image_paths()
 
         if not image_paths:
-            st.error("No images available for OCR processing")
+            display_processing_error("OCR processing", "No images available")
             return False
 
         # Process with OCR
@@ -180,8 +217,10 @@ def process_ocr_only() -> bool:
         return True
 
     except Exception as e:
-        st.error(f"Error during OCR processing: {str(e)}")
+        display_processing_error("OCR processing", str(e))
         return False
+
+
 
 def display_images_section():
     """Display the generated statement images before OCR processing."""
