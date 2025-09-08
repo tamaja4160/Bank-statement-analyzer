@@ -16,7 +16,12 @@ import json
 from statement_generator import generate_statements_for_name
 from payment_analyzer import analyze_recurring_payments
 from session_manager import SessionManager
-from display_helpers import display_statement_with_extractions, display_analysis_results
+from display_helpers import (
+    apply_global_styles,
+    display_statement_with_extractions,
+    display_analysis_results,
+    display_deal_comparison_results,
+)
 
 # Import the existing simple_image_reader
 import sys
@@ -46,6 +51,9 @@ def main():
     st.markdown("""
     Generate bank statements, extract transaction data, and identify recurring payments.
     """)
+
+    # Apply larger fonts for all tables (Extracted Transactions, Recurring Payment Analysis, etc.)
+    apply_global_styles(table_font_px=18)
 
     # Sidebar configuration
     with st.sidebar:
@@ -104,14 +112,18 @@ def main():
 
         # Enable analysis button if we have data
         if st.sidebar.button("📊 Analyze Recurring Payments", type="secondary"):
-            with st.spinner("Analyzing recurring payments..."):
-                analyze_payments()
+            # Persist analysis view across reruns
+            st.session_state.show_analysis = True
+            st.rerun()
+
+        # Render analysis if user previously triggered it
+        if st.session_state.get('show_analysis', False):
+            analyze_payments()
 
 def generate_statements_only(name: str, num_statements: int) -> bool:
     """Generate bank statements without OCR processing."""
     try:
         # Generate statements
-        st.info("📝 Generating bank statements...")
         progress_bar = st.progress(0)
 
         image_paths = generate_statements_for_name(name, num_statements)
@@ -143,7 +155,6 @@ def process_ocr_only() -> bool:
             return False
 
         # Process with OCR
-        st.info("🔍 Processing images with OCR...")
         reader = SimpleImageReader()
 
         all_results = []
@@ -220,7 +231,7 @@ def display_results_section():
 
     # Display each statement
     for i, (image_path, result) in enumerate(zip(results['image_paths'], results['results'])):
-        with st.expander(f"📄 Statement {i+1}: {Path(image_path).name}", expanded=(i < 3)):
+        with st.expander(f"📄 Statement {i+1}", expanded=(i < 3)):
             display_statement_with_extractions(image_path, result)
 
 def analyze_payments():
@@ -247,6 +258,44 @@ def analyze_payments():
 
     # Display results
     display_analysis_results(analysis_results, all_transactions)
+
+    # Add "Check for Better Deals" button if we have recurring payments
+    if analysis_results.get('recurring_payments'):
+        st.markdown("---")
+        st.write("💡 **Tip:** Click below to see if you can save money by switching providers!")
+
+        # Debug info
+        st.write(f"Found {len(analysis_results['recurring_payments'])} recurring payments")
+
+        if st.button("🔍 Check for Better Deals", type="primary", use_container_width=True):
+            # Persist intent and re-run so comparison renders deterministically
+            st.session_state.show_deal_comparison = True
+            st.session_state.analysis_results = analysis_results
+            st.rerun()
+
+    # Show deal comparison if button was clicked
+    if st.session_state.get('show_deal_comparison', False):
+        show_deal_comparison(st.session_state.get('analysis_results', {}))
+def show_deal_comparison(analysis_results: Dict):
+    """Show detailed deal comparison results."""
+    deal_analysis = analysis_results.get('deal_analysis', {})
+
+    if not deal_analysis or not deal_analysis.get('deal_comparisons'):
+        st.info("🔍 No better deals found for your current subscriptions. Your providers are already offering competitive rates!")
+        if st.button("⬅️ Back to Analysis"):
+            st.session_state.show_deal_comparison = False
+            st.rerun()
+        return
+
+    # Add back button
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col1:
+        if st.button("⬅️ Back to Analysis"):
+            st.session_state.show_deal_comparison = False
+            st.rerun()
+
+    # Display detailed deal comparison
+    display_deal_comparison_results(deal_analysis)
 
 if __name__ == "__main__":
     main()

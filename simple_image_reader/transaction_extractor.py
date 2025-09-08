@@ -20,26 +20,40 @@ class SimpleTransactionExtractor:
     def extract_single_line_transactions(self, text: str) -> List[Dict]:
         """
         Extract transactions that appear on single lines using regex patterns.
-        
+        Skips any lines containing balance information (KONTOSTAND AM...).
+
         Args:
             text: OCR extracted text
-            
+
         Returns:
             List of extracted transaction dictionaries with raw data
         """
         transactions = []
         processed_lines = set()  # Track which lines we've already processed
 
+        # Split text into lines and filter out balance lines
+        lines = [line.strip() for line in text.split('\n') if line.strip()]
+        filtered_lines = []
+
+        for line in lines:
+            # Skip balance lines
+            if "KONTOSTAND AM" in line.upper():
+                continue
+            filtered_lines.append(line)
+
+        # Reconstruct filtered text
+        filtered_text = '\n'.join(filtered_lines)
+
         for pattern in self.config.transaction_patterns:
-            matches = re.finditer(pattern, text, re.MULTILINE)
+            matches = re.finditer(pattern, filtered_text, re.MULTILINE)
             for match in matches:
                 # Get the full matched text to avoid duplicates
                 full_match = match.group(0)
                 if full_match in processed_lines:
                     continue
-                    
+
                 processed_lines.add(full_match)
-                
+
                 if len(match.groups()) >= 4:
                     date1, date2, description, amount_str = match.groups()[:4]
 
@@ -54,10 +68,11 @@ class SimpleTransactionExtractor:
     def extract_multiline_transactions(self, text: str) -> List[Dict]:
         """
         Extract transactions that are split across multiple lines.
-        
+        Skips the balance line (KONTOSTAND AM...) and starts parsing from actual transactions.
+
         Args:
             text: OCR extracted text
-            
+
         Returns:
             List of extracted transaction dictionaries
         """
@@ -67,6 +82,7 @@ class SimpleTransactionExtractor:
         # Look for transaction blocks between markers
         in_transaction_section = False
         transaction_lines = []
+        skip_next_line = False  # Flag to skip the balance line after finding KONTOSTAND
 
         for line in lines:
             if self.config.transaction_start_marker in line.upper():
@@ -75,6 +91,7 @@ class SimpleTransactionExtractor:
                     transactions.extend(self._extract_from_block(transaction_lines))
                     transaction_lines = []
                 in_transaction_section = True
+                skip_next_line = True  # Skip the next line (balance line)
             elif self.config.transaction_end_marker in line.upper():
                 if in_transaction_section:
                     # Process final transaction block
@@ -82,7 +99,16 @@ class SimpleTransactionExtractor:
                 in_transaction_section = False
                 break
             elif in_transaction_section:
-                transaction_lines.append(line)
+                if skip_next_line:
+                    # Skip the balance line (KONTOSTAND AM...)
+                    skip_next_line = False
+                    continue
+                elif "KONTOSTAND AM" in line.upper():
+                    # Additional check to skip any balance lines
+                    continue
+                else:
+                    # This is a transaction line
+                    transaction_lines.append(line)
 
         return transactions
 

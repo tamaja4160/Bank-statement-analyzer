@@ -17,29 +17,41 @@ class SessionManager:
 
     def _init_session_state(self):
         """Initialize session state variables if they don't exist."""
+        # Check if Streamlit session state is available
         try:
-            if 'session_data' not in st.session_state:
-                st.session_state.session_data = {
-                    'user_name': '',
-                    'image_paths': [],
-                    'results': [],
-                    'analysis_results': None,
-                    'session_id': None
-                }
-        except (AttributeError, KeyError) as e:
+            # Try to access st.session_state to see if it exists
+            _ = st.session_state
+            session_state_available = True
+        except AttributeError:
+            session_state_available = False
+
+        if session_state_available:
+            try:
+                if 'session_data' not in st.session_state:
+                    st.session_state.session_data = {
+                        'user_name': '',
+                        'image_paths': [],
+                        'results': [],
+                        'analysis_results': None,
+                        'session_id': None
+                    }
+            except (AttributeError, KeyError) as e:
+                print(f"Warning: Error initializing Streamlit session state: {e}")
+                session_state_available = False
+
+        if not session_state_available:
             # Handle case when Streamlit session state is not available
             # (e.g., when running with python app.py instead of streamlit run app.py)
-            print(f"Warning: Streamlit session state not available. Error: {e}")
+            print("Warning: Streamlit session state not available.")
             print("Please run the app with: streamlit run app.py")
             # Create a fallback in-memory storage
-            if not hasattr(self, '_fallback_data'):
-                self._fallback_data = {
-                    'user_name': '',
-                    'image_paths': [],
-                    'results': [],
-                    'analysis_results': None,
-                    'session_id': None
-                }
+            self._fallback_data = {
+                'user_name': '',
+                'image_paths': [],
+                'results': [],
+                'analysis_results': None,
+                'session_id': None
+            }
 
     def save_image_paths(self, user_name: str, image_paths: List[str]):
         """
@@ -74,12 +86,21 @@ class SessionManager:
             image_paths: List of generated image file paths
             results: OCR processing results
         """
-        st.session_state.session_data.update({
-            'user_name': user_name,
-            'image_paths': image_paths,
-            'results': results,
-            'analysis_results': None  # Reset analysis when new data is loaded
-        })
+        try:
+            st.session_state.session_data.update({
+                'user_name': user_name,
+                'image_paths': image_paths,
+                'results': results,
+                'analysis_results': None  # Reset analysis when new data is loaded
+            })
+        except (AttributeError, KeyError):
+            # Use fallback storage
+            self._fallback_data.update({
+                'user_name': user_name,
+                'image_paths': image_paths,
+                'results': results,
+                'analysis_results': None
+            })
 
     def save_analysis_results(self, analysis_results: Dict):
         """
@@ -88,7 +109,10 @@ class SessionManager:
         Args:
             analysis_results: Results from recurring payment analysis
         """
-        st.session_state.session_data['analysis_results'] = analysis_results
+        try:
+            st.session_state.session_data['analysis_results'] = analysis_results
+        except (AttributeError, KeyError):
+            self._fallback_data['analysis_results'] = analysis_results
 
     def get_results(self) -> Optional[Dict]:
         """
@@ -151,13 +175,22 @@ class SessionManager:
 
     def clear_session(self):
         """Clear all session data."""
-        st.session_state.session_data = {
-            'user_name': '',
-            'image_paths': [],
-            'results': [],
-            'analysis_results': None,
-            'session_id': None
-        }
+        try:
+            st.session_state.session_data = {
+                'user_name': '',
+                'image_paths': [],
+                'results': [],
+                'analysis_results': None,
+                'session_id': None
+            }
+        except (AttributeError, KeyError):
+            self._fallback_data = {
+                'user_name': '',
+                'image_paths': [],
+                'results': [],
+                'analysis_results': None,
+                'session_id': None
+            }
 
     def get_user_name(self) -> str:
         """
@@ -203,7 +236,11 @@ class SessionManager:
             export_path: Path for the export file
         """
         try:
-            data = st.session_state.session_data.copy()
+            # Try to get data from session state first
+            try:
+                data = st.session_state.session_data.copy()
+            except (AttributeError, KeyError):
+                data = self._fallback_data.copy()
 
             # Convert any non-serializable objects if needed
             # (Currently all data should be JSON serializable)
@@ -238,7 +275,12 @@ class SessionManager:
             if not all(key in data for key in required_keys):
                 return False
 
-            st.session_state.session_data = data
+            # Try to save to session state, fallback to in-memory storage
+            try:
+                st.session_state.session_data = data
+            except (AttributeError, KeyError):
+                self._fallback_data = data
+
             return True
         except Exception as e:
             print(f"Error importing session data: {e}")

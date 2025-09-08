@@ -8,6 +8,34 @@ import pandas as pd
 from typing import Dict, List
 from pathlib import Path
 
+def apply_global_styles(table_font_px: int = 18):
+    """
+    Inject global CSS to enlarge fonts inside tables and dataframes across the app.
+
+    Args:
+        table_font_px: Target font size in pixels for table contents.
+    """
+    st.markdown(f"""
+    <style>
+    /* Make Streamlit's interactive DataFrame (st.dataframe) text larger */
+    div[data-testid="stDataFrame"] * {{
+        font-size: {table_font_px}px !important;
+        line-height: 1.4 !important;
+    }}
+
+    /* Make static tables (st.table) text larger */
+    table tbody td, table thead th {{
+        font-size: {table_font_px}px !important;
+        line-height: 1.4 !important;
+    }}
+
+    /* Enlarge expander headers that often wrap tables */
+    div[role="button"][data-baseweb="accordion"] p {{
+        font-size: {table_font_px}px !important;
+    }}
+    </style>
+    """, unsafe_allow_html=True)
+
 def display_statement_with_extractions(image_path: str, result: Dict):
     """
     Display a bank statement image alongside its extracted transaction lines.
@@ -98,14 +126,28 @@ def display_analysis_results(analysis_results: Dict, all_transactions: List[Dict
             {
                 'Biller': payment['description'],
                 'Occurrences': payment['occurrences'],
-                'Avg Amount (€)': f"€{payment['average_amount']:.2f}",
-                'Confidence': f"{payment['confidence']:.1%}",
-                'Pattern Type': payment['pattern_type']
+                'Avg Amount (€)': f"€{payment['average_amount']:.2f}"
             }
             for payment in recurring_payments
         ])
 
-        st.dataframe(recurring_df, use_container_width=True)
+        # Display in a narrower, fixed-size table to prevent width jitter
+        mid_col = st.columns([1, 2, 1])[1]
+        with mid_col:
+            st.dataframe(
+                recurring_df,
+                use_container_width=False,
+                width=900,
+                height=300,
+                hide_index=True,
+            )
+
+        # Deal analysis summary
+        deal_analysis = analysis_results.get('deal_analysis', {})
+        if deal_analysis and deal_analysis.get('total_monthly_savings', 0) > 0:
+            st.success(f"💰 **Potential Monthly Savings: €{deal_analysis['total_monthly_savings']:.2f}** "
+                      f"({deal_analysis['savings_percentage']:.1f}% of recurring costs)")
+            st.metric("Current Monthly Cost", f"€{deal_analysis['total_current_cost']:.2f}")
 
         # Detailed view of each recurring payment
         for payment in recurring_payments:
@@ -217,3 +259,55 @@ def display_warning_message(message: str):
         message: Warning message to display
     """
     st.warning(f"⚠️ {message}")
+
+def display_deal_comparison_results(deal_analysis: Dict):
+    """
+    Display detailed deal comparison results.
+
+    Args:
+        deal_analysis: Deal comparison analysis results
+    """
+    if not deal_analysis or not deal_analysis.get('deal_comparisons'):
+        st.info("No better deals found for your current subscriptions.")
+        return
+
+    st.header("🔍 Better Deal Analysis")
+    # Summary right under header: potential monthly & annual savings
+    colA, colB = st.columns(2)
+    with colA:
+        st.metric("Potential Monthly Savings", f"€{deal_analysis['total_monthly_savings']:.2f}")
+    with colB:
+        st.metric("Annual Savings", f"€{deal_analysis['total_annual_savings']:.2f}")
+
+    # Individual deal comparisons
+    st.subheader("💡 Recommended Switches")
+
+    for i, deal in enumerate(deal_analysis['deal_comparisons'], 1):
+        with st.expander(f"{i}. {deal['current_provider']} → {deal['alternative_provider']}", expanded=(i <= 3)):
+            col1, col2 = st.columns(2)
+
+            with col1:
+                st.markdown(f"**Current:** {deal['current_provider']}")
+                st.markdown(f"**Cost:** €{deal['current_amount']:.2f}/month")
+                st.markdown(f"**Category:** {deal['category']}")
+
+            with col2:
+                st.markdown(f"**Alternative:** {deal['alternative_provider']}")
+                st.markdown(f"**Cost:** €{deal['alternative_amount']:.2f}/month")
+                st.markdown(f"**Rating:** ⭐ {deal['rating']}/5")
+
+            # Savings highlight
+            savings_color = "🟢" if deal['savings_percentage'] >= 20 else "🟡" if deal['savings_percentage'] >= 10 else "🟠"
+            st.success(f"{savings_color} **Save €{deal['monthly_savings']:.2f}/month** "
+                      f"({deal['savings_percentage']:.1f}% savings)")
+
+            st.markdown("---")
+
+    # Action items
+    st.subheader("📋 Next Steps")
+    st.markdown("""
+    1. **Review alternatives** - Check ratings and terms for each provider
+    2. **Compare features** - Ensure the alternative meets your needs
+    3. **Check contracts** - Review cancellation terms for current providers
+    4. **Switch gradually** - Consider switching one service at a time
+    """)

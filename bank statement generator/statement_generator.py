@@ -1,12 +1,20 @@
 import random
 from datetime import datetime, timedelta
 from pathlib import Path
+import sys
+import os
+
+# Add the parent directory to the path to import from streamlit_bank_analyzer
+sys.path.append(os.path.join(os.path.dirname(__file__), "..", "streamlit_bank_analyzer"))
 
 import excel2img
 import pandas as pd
 from faker import Faker
 from openpyxl import load_workbook
 from openpyxl.styles import Alignment
+
+# Import comprehensive transaction data
+from transaction_data import RECURRING_PAYMENTS, ONE_OFF_PAYMENTS, GERMAN_CITIES
 
 # Configuration
 NUM_STATEMENTS = 20
@@ -21,59 +29,6 @@ TRANSACTION_END_ROW = 11
 END_BALANCE_ROW = 12
 NEXT_BILLING_ROW = 13
 MAX_TRANSACTIONS = TRANSACTION_END_ROW - TRANSACTION_START_ROW + 1
-
-# Recurring payments data
-RECURRING_PAYMENTS = [
-    {
-        "partner": "Allianz SE", "category": "Insurance",
-        "description_template": "BEITRAG {partner} K-{contract_id}",
-        "base_amount": 55.20, "variation": (-2.5, 2.5)
-    },
-    {
-        "partner": "VODAFONE GMBH", "category": "Internet",
-        "description_template": "RECHNUNG {partner} {contract_id}",
-        "base_amount": 39.99, "variation": (-2.5, 2.5)
-    },
-    {
-        "partner": "ZEUS BODYPOWER", "category": "Gym",
-        "description_template": "MITGLIEDSBEITRAG {partner}",
-        "base_amount": 25.00, "variation": (-0.5, 0.5)
-    },
-    {
-        "partner": "Stadtwerke Rosenheim", "category": "Electricity",
-        "description_template": "ABSCHLAG STROM {partner} {contract_id}",
-        "base_amount": 85.50, "variation": (-2.5, 2.5)
-    },
-]
-
-# One-off payments data
-ONE_OFF_PAYMENTS = [
-    {
-        "partner_options": ["EDEKA", "REWE", "LIDL", "ALDI SUED"], "category": "Groceries",
-        "description_template": "KARTENZ./{date_short} {partner} RO",
-        "amount_range": (15.0, 150.0)
-    },
-    {
-        "partner_options": ["AMAZON.DE", "ZALANDO", "EBAY"], "category": "Shopping",
-        "description_template": "{partner} MKTPLC EU {random_str}",
-        "amount_range": (10.0, 250.0)
-    },
-    {
-        "partner_options": ["SHELL", "ARAL", "JET"], "category": "Fuel",
-        "description_template": "KARTENZAHLUNG {partner} TANKSTELLE",
-        "amount_range": (40.0, 90.0)
-    },
-    {
-        "partner_options": ["BURGER KING", "MCDONALDS"], "category": "Dining",
-        "description_template": "{partner} {city}",
-        "amount_range": (8.0, 45.0)
-    },
-    {
-        "partner_options": ["PAYPAL"], "category": "General",
-        "description_template": "PAYPAL {random_str}",
-        "amount_range": (5.0, 100.0)
-    }
-]
 
 
 def select_recurring_payments(num_transactions):

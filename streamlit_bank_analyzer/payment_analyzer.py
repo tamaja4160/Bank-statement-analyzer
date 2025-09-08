@@ -41,14 +41,42 @@ def analyze_recurring_payments(transactions: List[Dict]) -> Dict:
     # Sort by occurrences
     recurring_payments.sort(key=lambda x: x['occurrences'], reverse=True)
 
+    # Import deal comparison here to avoid circular imports
+    find_better_deals = None
+    try:
+        # Try absolute import when modules are imported as top-level files
+        from deal_comparison import find_better_deals as _fbd
+        find_better_deals = _fbd
+    except Exception:
+        try:
+            # Fallback to relative import when used as a package
+            from .deal_comparison import find_better_deals as _fbd
+            find_better_deals = _fbd
+        except Exception:
+            find_better_deals = None
+
+    if find_better_deals:
+        deal_analysis = find_better_deals(recurring_payments)
+    else:
+        deal_analysis = {
+            'deal_comparisons': [],
+            'total_current_cost': 0,
+            'total_monthly_savings': 0,
+            'total_annual_savings': 0,
+            'savings_percentage': 0
+        }
+
     recommendations = []
     if recurring_payments:
         recommendations.append(f"Detected {len(recurring_payments)} recurring payment(s).")
+        if deal_analysis['total_monthly_savings'] > 0:
+            recommendations.append(f"💰 Potential monthly savings: €{deal_analysis['total_monthly_savings']:.2f}")
     else:
         recommendations.append("No recurring payments detected.")
 
     return {
         'recurring_payments': recurring_payments,
+        'deal_analysis': deal_analysis,
         'recommendations': recommendations,
         'total_analyzed': len(transactions),
         'unique_descriptions': len(groups)
