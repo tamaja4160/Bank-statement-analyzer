@@ -88,25 +88,10 @@ def display_analysis_results(analysis_results: Dict, all_transactions: List[Dict
         st.warning("No analysis results available")
         return
 
-    # Summary metrics
-    st.subheader("📊 Analysis Summary")
-
-    col1, col2, col3, col4 = st.columns(4)
-    with col1:
-        st.metric("Total Transactions", analysis_results.get('total_analyzed', 0))
-    with col2:
-        st.metric("Unique Descriptions", analysis_results.get('unique_descriptions', 0))
-    with col3:
-        st.metric("Recurring Types", len(analysis_results.get('recurring_payments', [])))
-    with col4:
-        recurring_count = sum(p.get('occurrences', 0) for p in analysis_results.get('recurring_payments', []))
-        st.metric("Recurring Transactions", recurring_count)
-
     # Recurring payments table
     recurring_payments = analysis_results.get('recurring_payments', [])
 
     if recurring_payments:
-        st.subheader("🔄 Identified Recurring Payments")
 
         # Create a dataframe for better display
         recurring_df = pd.DataFrame([
@@ -127,20 +112,6 @@ def display_analysis_results(analysis_results: Dict, all_transactions: List[Dict
             with st.expander(f"📋 {payment['description']} - {payment['occurrences']} occurrences", expanded=False):
                 display_recurring_payment_details(payment)
 
-    # General insights
-    st.subheader("💡 Analysis Insights")
-
-    recommendations = analysis_results.get('recommendations', [])
-    if recommendations:
-        for rec in recommendations:
-            if rec.strip():  # Only display non-empty insights
-                st.markdown(rec)
-    else:
-        st.info("No specific insights available")
-
-    # Additional insights
-    if recurring_payments:
-        display_payment_insights(recurring_payments, all_transactions)
 
 def display_recurring_payment_details(payment: Dict):
     """

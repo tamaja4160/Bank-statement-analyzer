@@ -17,14 +17,29 @@ class SessionManager:
 
     def _init_session_state(self):
         """Initialize session state variables if they don't exist."""
-        if 'session_data' not in st.session_state:
-            st.session_state.session_data = {
-                'user_name': '',
-                'image_paths': [],
-                'results': [],
-                'analysis_results': None,
-                'session_id': None
-            }
+        try:
+            if 'session_data' not in st.session_state:
+                st.session_state.session_data = {
+                    'user_name': '',
+                    'image_paths': [],
+                    'results': [],
+                    'analysis_results': None,
+                    'session_id': None
+                }
+        except (AttributeError, KeyError) as e:
+            # Handle case when Streamlit session state is not available
+            # (e.g., when running with python app.py instead of streamlit run app.py)
+            print(f"Warning: Streamlit session state not available. Error: {e}")
+            print("Please run the app with: streamlit run app.py")
+            # Create a fallback in-memory storage
+            if not hasattr(self, '_fallback_data'):
+                self._fallback_data = {
+                    'user_name': '',
+                    'image_paths': [],
+                    'results': [],
+                    'analysis_results': None,
+                    'session_id': None
+                }
 
     def save_image_paths(self, user_name: str, image_paths: List[str]):
         """
@@ -34,12 +49,21 @@ class SessionManager:
             user_name: Name entered by the user
             image_paths: List of generated image file paths
         """
-        st.session_state.session_data.update({
-            'user_name': user_name,
-            'image_paths': image_paths,
-            'results': [],  # Clear any previous results
-            'analysis_results': None
-        })
+        try:
+            st.session_state.session_data.update({
+                'user_name': user_name,
+                'image_paths': image_paths,
+                'results': [],  # Clear any previous results
+                'analysis_results': None
+            })
+        except (AttributeError, KeyError):
+            # Use fallback storage
+            self._fallback_data.update({
+                'user_name': user_name,
+                'image_paths': image_paths,
+                'results': [],
+                'analysis_results': None
+            })
 
     def save_results(self, user_name: str, image_paths: List[str], results: List[Dict]):
         """
@@ -73,7 +97,11 @@ class SessionManager:
         Returns:
             Dictionary containing session data or None if no data
         """
-        data = st.session_state.session_data
+        try:
+            data = st.session_state.session_data
+        except (AttributeError, KeyError):
+            data = self._fallback_data
+
         if data['image_paths'] and data['results']:
             return {
                 'user_name': data['user_name'],
@@ -90,7 +118,10 @@ class SessionManager:
         Returns:
             Analysis results dictionary or None
         """
-        return st.session_state.session_data.get('analysis_results')
+        try:
+            return st.session_state.session_data.get('analysis_results')
+        except (AttributeError, KeyError):
+            return self._fallback_data.get('analysis_results')
 
     def has_results(self) -> bool:
         """
@@ -99,8 +130,12 @@ class SessionManager:
         Returns:
             True if results exist, False otherwise
         """
-        data = st.session_state.session_data
-        return bool(data['image_paths'] and data['results'])
+        try:
+            data = st.session_state.session_data
+            return bool(data['image_paths'] and data['results'])
+        except (AttributeError, KeyError):
+            data = self._fallback_data
+            return bool(data['image_paths'] and data['results'])
 
     def has_analysis(self) -> bool:
         """
@@ -109,7 +144,10 @@ class SessionManager:
         Returns:
             True if analysis results exist, False otherwise
         """
-        return st.session_state.session_data.get('analysis_results') is not None
+        try:
+            return st.session_state.session_data.get('analysis_results') is not None
+        except (AttributeError, KeyError):
+            return self._fallback_data.get('analysis_results') is not None
 
     def clear_session(self):
         """Clear all session data."""
@@ -128,7 +166,10 @@ class SessionManager:
         Returns:
             User name string
         """
-        return st.session_state.session_data.get('user_name', '')
+        try:
+            return st.session_state.session_data.get('user_name', '')
+        except (AttributeError, KeyError):
+            return self._fallback_data.get('user_name', '')
 
     def get_image_paths(self) -> List[str]:
         """
@@ -137,7 +178,10 @@ class SessionManager:
         Returns:
             List of image file paths
         """
-        return st.session_state.session_data.get('image_paths', [])
+        try:
+            return st.session_state.session_data.get('image_paths', [])
+        except (AttributeError, KeyError):
+            return self._fallback_data.get('image_paths', [])
 
     def get_processing_results(self) -> List[Dict]:
         """
@@ -146,7 +190,10 @@ class SessionManager:
         Returns:
             List of processing result dictionaries
         """
-        return st.session_state.session_data.get('results', [])
+        try:
+            return st.session_state.session_data.get('results', [])
+        except (AttributeError, KeyError):
+            return self._fallback_data.get('results', [])
 
     def export_session_data(self, export_path: str = "session_export.json"):
         """

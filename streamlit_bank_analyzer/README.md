@@ -1,6 +1,6 @@
-# Bank Statement Analyzer - Streamlit Application
+# Bank Statement Analyzer
 
-A comprehensive Streamlit application that generates bank statements, extracts transaction data using OCR, and identifies recurring payments for financial analysis.
+A comprehensive solution for bank statement analysis with both **Streamlit Web Application** and **FastAPI REST Service** that generates bank statements, extracts transaction data using OCR, and identifies recurring payments for financial analysis.
 
 ## Features
 
@@ -61,7 +61,51 @@ pip install -r requirements.txt
 
 ### Running the Application
 ```bash
+# Correct way to run Streamlit app
 streamlit run app.py
+
+# Note: Do NOT run with 'python app.py' as it will cause session state errors
+```
+
+### Running the REST API
+```bash
+# Option 1: Direct execution
+python api.py
+
+# Option 2: Using the run script
+python run_api.py
+```
+
+The API will be available at:
+- **API Base URL**: http://localhost:8000
+- **Interactive Docs**: http://localhost:8000/docs
+- **Health Check**: http://localhost:8000/health
+
+### API Endpoints
+
+#### POST `/generate-statements`
+Generate bank statements for a user.
+```json
+{
+  "user_name": "John Doe",
+  "num_statements": 5
+}
+```
+
+#### POST `/process-ocr`
+Process existing images with OCR.
+```json
+{
+  "user_name": "John Doe"
+}
+```
+
+#### POST `/analyze-payments`
+Analyze recurring payments for a user.
+```json
+{
+  "user_name": "John Doe"
+}
 ```
 
 ### Workflow Steps
@@ -126,6 +170,8 @@ streamlit run app.py
 ```
 streamlit_bank_analyzer/
 ├── app.py                    # Main Streamlit application
+├── api.py                    # FastAPI REST service
+├── run_api.py               # Script to run the API server
 ├── statement_generator.py    # Modified bank statement generator
 ├── payment_analyzer.py       # Recurring payment detection engine
 ├── session_manager.py        # Streamlit session state management
