@@ -1,6 +1,6 @@
 # Bank Statement Analyzer - Streamlit Application
 
-A comprehensive Streamlit application that generates bank statements, extracts transaction data using OCR, and identifies recurring payments to recommend IBAN changes for billers.
+A comprehensive Streamlit application that generates bank statements, extracts transaction data using OCR, and identifies recurring payments for financial analysis.
 
 ## Features
 
@@ -8,7 +8,7 @@ A comprehensive Streamlit application that generates bank statements, extracts t
 1. **Generate Bank Statements**: Create realistic bank statements with your name
 2. **OCR Processing**: Extract transaction data using advanced OCR technology
 3. **Recurring Payment Detection**: Identify regular payments and billers
-4. **IBAN Change Recommendations**: Get personalized recommendations for account switching
+4. **Financial Analysis**: Get insights into spending patterns and recurring costs
 
 ### 📊 Advanced Analysis
 - **Fuzzy Matching**: Groups similar transactions using intelligent text matching
@@ -17,9 +17,9 @@ A comprehensive Streamlit application that generates bank statements, extracts t
 - **Financial Insights**: Provides statistics on spending patterns and recurring costs
 
 ### 🎯 Business Value
-- **Account Switch Service**: Perfect for FinTech companies offering Kontowechselservice
+- **Financial Analysis**: Perfect for FinTech companies offering payment analysis services
 - **Customer Insights**: Helps customers understand their recurring payment landscape
-- **Process Automation**: Automates the identification of billers for IBAN changes
+- **Process Automation**: Automates the identification and analysis of recurring payments
 - **Data Quality**: Leverages 96% OCR accuracy for reliable transaction extraction
 
 ## Technology Stack
@@ -82,13 +82,13 @@ streamlit run app.py
 4. **Analyze Recurring Payments**
    - Click "📊 Analyze Recurring Payments"
    - Review identified recurring billers
-   - Get IBAN change recommendations
+   - Get financial insights and analysis
 
 ## Output Examples
 
 ### Recurring Payment Detection
 ```
-💡 High Priority: We will change your IBAN for these regular billers:
+💡 Analysis Insights: Regular billers identified:
 • VODAFONE GMBH
 • Allianz SE
 • ZEUS BODYPOWER
@@ -148,10 +148,10 @@ streamlit_bank_analyzer/
 
 ## Business Applications
 
-### FinTech - Account Switch Service
+### FinTech - Payment Analysis Services
 - **Customer Onboarding**: Quick analysis of customer's payment landscape
 - **Biller Identification**: Automated detection of recurring payment partners
-- **Process Optimization**: Streamlined IBAN change recommendations
+- **Process Optimization**: Streamlined financial analysis and insights
 
 ### Banking Applications
 - **Customer Insights**: Understanding spending patterns and regular expenses

@@ -99,7 +99,7 @@ class BatchTransactionRequest(BaseModel):
 class AnalysisResponse(BaseModel):
     """Response model for analysis results."""
     recurring_payments: List[Dict[str, Any]] = Field(..., description="Detected recurring payments")
-    recommendations: List[str] = Field(..., description="IBAN change recommendations")
+    recommendations: List[str] = Field(..., description="Analysis insights and recommendations")
     total_analyzed: int = Field(..., description="Total transactions analyzed")
     unique_descriptions: int = Field(..., description="Number of unique transaction descriptions")
     processing_time: float = Field(..., description="Processing time in seconds")
@@ -138,7 +138,7 @@ async def analyze_transactions(request: BatchTransactionRequest, background_task
     Analyze transactions for recurring payments.
 
     This endpoint uses advanced ML techniques to identify recurring payment patterns
-    and provides recommendations for IBAN changes.
+    and provides analysis insights and recommendations.
     """
     start_time = datetime.now()
 

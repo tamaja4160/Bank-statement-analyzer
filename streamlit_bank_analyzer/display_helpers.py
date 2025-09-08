@@ -127,16 +127,16 @@ def display_analysis_results(analysis_results: Dict, all_transactions: List[Dict
             with st.expander(f"📋 {payment['description']} - {payment['occurrences']} occurrences", expanded=False):
                 display_recurring_payment_details(payment)
 
-    # Recommendations
-    st.subheader("💡 IBAN Change Recommendations")
+    # General insights
+    st.subheader("💡 Analysis Insights")
 
     recommendations = analysis_results.get('recommendations', [])
     if recommendations:
         for rec in recommendations:
-            if rec.strip():  # Only display non-empty recommendations
+            if rec.strip():  # Only display non-empty insights
                 st.markdown(rec)
     else:
-        st.info("No specific recommendations available")
+        st.info("No specific insights available")
 
     # Additional insights
     if recurring_payments:

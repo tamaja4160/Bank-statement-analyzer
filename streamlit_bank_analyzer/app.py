@@ -1,7 +1,7 @@
 """
 Streamlit Bank Statement Analyzer
 A comprehensive application for generating, processing, and analyzing bank statements
-to identify recurring payments and recommend IBAN changes.
+to identify recurring payments.
 """
 
 import streamlit as st
@@ -44,8 +44,7 @@ def main():
     # Header
     st.title("🏦 Bank Statement Analyzer")
     st.markdown("""
-    Generate bank statements, extract transaction data, and identify recurring payments
-    to recommend IBAN changes for your billers.
+    Generate bank statements, extract transaction data, and identify recurring payments.
     """)
 
     # Sidebar configuration
