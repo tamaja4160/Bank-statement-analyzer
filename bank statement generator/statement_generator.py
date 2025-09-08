@@ -9,7 +9,7 @@ from openpyxl import load_workbook
 from openpyxl.styles import Alignment
 
 # --- CONFIGURATION ---
-NUM_STATEMENTS_TO_GENERATE = 200# Increased for more variety
+NUM_STATEMENTS_TO_GENERATE = 20  # Reduced for faster generation
 OUTPUT_FOLDER = "bank statement generator/bank_statements"
 TEMPLATE_FILE = "bank statement generator/template.xlsx"
 GROUND_TRUTH_CSV = os.path.join(OUTPUT_FOLDER, "ground_truth.csv")
@@ -23,6 +23,10 @@ NEXT_BILLING_ROW = 13
 MAX_TRANSACTIONS_PER_STATEMENT = (TRANSACTION_END_ROW - TRANSACTION_START_ROW) + 1
 
 # --- DATA FOR RECURRING PAYMENTS ---
+ZEUS_BODYPOWER_PARTNER = "ZEUS BODYPOWER"
+ZEUS_BODYPOWER_VARIATION_AMOUNT = 0.5  # Maximum variation for ZEUS BODYPOWER payments
+ZEUS_BODYPOWER_VARIATION = (-ZEUS_BODYPOWER_VARIATION_AMOUNT, ZEUS_BODYPOWER_VARIATION_AMOUNT)
+
 RECURRING_PAYMENTS = [
     {
         "partner": "Allianz SE", "category": "Insurance",
@@ -35,7 +39,7 @@ RECURRING_PAYMENTS = [
         "base_amount": 39.99
     },
     {
-        "partner": "ZEUS BODYPOWER", "category": "Gym",
+        "partner": ZEUS_BODYPOWER_PARTNER, "category": "Gym",
         "description_template": "MITGLIEDSBEITRAG {partner}",
         "base_amount": 25.00
     },
@@ -89,10 +93,22 @@ def generate_statement_data(fake: Faker, statement_number: int):
 
     # --- CHANGED: Generate a more varied mix of transactions ---
     num_total_transactions = random.randint(3, MAX_TRANSACTIONS_PER_STATEMENT)
-    potential_recurring = random.sample(
-        RECURRING_PAYMENTS,
-        random.randint(1, min(len(RECURRING_PAYMENTS), num_total_transactions - 1))
-    )
+
+    # Ensure Vodafone appears in at least 60% of statements for testing
+    guaranteed_recurring = []
+    if random.random() < 0.6:  # 60% chance
+        vodafone_payment = next(p for p in RECURRING_PAYMENTS if p["partner"] == "VODAFONE GMBH")
+        guaranteed_recurring.append(vodafone_payment)
+
+    # Add other recurring payments randomly
+    remaining_payments = [p for p in RECURRING_PAYMENTS if p["partner"] != "VODAFONE GMBH"]
+    if remaining_payments:
+        num_additional = random.randint(0, min(len(remaining_payments), num_total_transactions - len(guaranteed_recurring) - 1))
+        if num_additional > 0:
+            additional_recurring = random.sample(remaining_payments, num_additional)
+            guaranteed_recurring.extend(additional_recurring)
+
+    potential_recurring = guaranteed_recurring
     
     transaction_pool = potential_recurring + [None] * (num_total_transactions - len(potential_recurring))
     random.shuffle(transaction_pool)
@@ -109,7 +125,14 @@ def generate_statement_data(fake: Faker, statement_number: int):
                 partner=partner,
                 contract_id=fake.random_number(digits=8)
             )
-            amount = round(transaction_type["base_amount"] + random.uniform(-2.5, 2.5), 2)
+
+            # Special handling for ZEUS BODYPOWER - much less variation
+            if partner == ZEUS_BODYPOWER_PARTNER:
+                # Only ±0.5€ variation for gym membership (much more consistent)
+                amount = round(transaction_type["base_amount"] + random.uniform(*ZEUS_BODYPOWER_VARIATION), 2)
+            else:
+                # Original variation for other recurring payments
+                amount = round(transaction_type["base_amount"] + random.uniform(-2.5, 2.5), 2)
         else:  # It's a one-off payment from the new pool
             one_off = random.choice(ONE_OFF_PAYMENTS)
             partner = random.choice(one_off["partner_options"])
