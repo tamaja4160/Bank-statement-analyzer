@@ -28,12 +28,20 @@ class SimpleTransactionExtractor:
             List of extracted transaction dictionaries with raw data
         """
         transactions = []
+        processed_lines = set()  # Track which lines we've already processed
 
         for pattern in self.config.transaction_patterns:
-            matches = re.findall(pattern, text, re.MULTILINE)
+            matches = re.finditer(pattern, text, re.MULTILINE)
             for match in matches:
-                if len(match) >= 4:
-                    date1, date2, description, amount_str = match[:4]
+                # Get the full matched text to avoid duplicates
+                full_match = match.group(0)
+                if full_match in processed_lines:
+                    continue
+                    
+                processed_lines.add(full_match)
+                
+                if len(match.groups()) >= 4:
+                    date1, date2, description, amount_str = match.groups()[:4]
 
                     transaction = self._create_simple_transaction(
                         date1, date2, amount_str, description.strip()
@@ -146,8 +154,8 @@ class SimpleTransactionExtractor:
 
             current_line = lines[current_idx]
 
-            # Check if this line contains an amount at the end
-            amount_match = re.search(r'(\d+[,\.]\d{1,2})-?\s*$', current_line)
+            # Check if this line contains an amount at the end (flexible ending)
+            amount_match = re.search(r'(\d+[,\.]\d{1,2})[-\.\s]*$', current_line)
             if amount_match:
                 amount_str = amount_match.group(1)
                 # Remove amount from description
@@ -242,7 +250,7 @@ class SimpleTransactionExtractor:
 
     def _remove_duplicates(self, transactions: List[Dict]) -> List[Dict]:
         """
-        Remove duplicate transactions based on date and amount.
+        Remove duplicate transactions based on description and amount.
         
         Args:
             transactions: List of transaction dictionaries
@@ -254,7 +262,8 @@ class SimpleTransactionExtractor:
         unique_transactions = []
 
         for trans in transactions:
-            key = (trans['formatted_date'], trans['amount_value'])
+            # Use description and amount for duplicate detection (more robust than date)
+            key = (trans['description'].strip(), trans['amount_value'])
             if key not in seen:
                 seen.add(key)
                 unique_transactions.append(trans)

@@ -3,7 +3,7 @@
     "total_images": 50,
     "successful_extractions": 50,
     "failed_extractions": 0,
-    "total_transactions": 181,
+    "total_transactions": 210,
     "average_confidence": 89.48069951825296,
     "success_rate": 1.0
   },
@@ -168,8 +168,17 @@
       "image_path": "bank statement generator\\bank_statements\\statement_101.png",
       "image_name": "statement_101.png",
       "ocr_confidence": 86.02127659574468,
-      "extracted_count": 2,
+      "extracted_count": 3,
       "transactions": [
+        {
+          "date1": "27.01",
+          "date2": "28.01",
+          "formatted_date": "27.01.2025",
+          "amount_str": "54,16",
+          "amount_value": 54.16,
+          "description": "BEITRAG Allianz SE K-12945226",
+          "raw_line": "27.01. 28.01. BEITRAG Allianz SE K-12945226 54,16-"
+        },
         {
           "date1": "29.01",
           "date2": "30.01",
@@ -196,8 +205,17 @@
       "image_path": "bank statement generator\\bank_statements\\statement_102.png",
       "image_name": "statement_102.png",
       "ocr_confidence": 90.66071428571429,
-      "extracted_count": 3,
+      "extracted_count": 5,
       "transactions": [
+        {
+          "date1": "11.01",
+          "date2": "12.01",
+          "formatted_date": "11.01.2025",
+          "amount_str": "74,42",
+          "amount_value": 74.42,
+          "description": "KARTENZAHLUNG SHELL TANKSTELLE",
+          "raw_line": "11.01. 12.01. KARTENZAHLUNG SHELL TANKSTELLE 74,42-"
+        },
         {
           "date1": "13.01",
           "date2": "14.01",
@@ -224,6 +242,15 @@
           "amount_value": 54.35,
           "description": "BEITRAG Allianz SE K-59657589",
           "raw_line": "19.01. 20.01. BEITRAG Allianz SE K-59657589 54,35-"
+        },
+        {
+          "date1": "22.01",
+          "date2": "23.01",
+          "formatted_date": "22.01.2025",
+          "amount_str": "64,16",
+          "amount_value": 64.16,
+          "description": "KARTENZAHLUNG ARAL TANKSTELLE",
+          "raw_line": "22.01. 23.01. KARTENZAHLUNG ARAL TANKSTELLE 64,16-"
         }
       ],
       "raw_ocr_text": "@ MasterCard Engin AUSZUG 102\n\"267041356247526 Peukert BLATT 1\nBELEG VALUTA BESCHREIBUNG BETRAG IN EURO\n\nKONTOSTAND AM 07.01.2025\n11.01. 12.01. KARTENZAHLUNG SHELL TANKSTELLE 74,42.\n13.01. 14.01. EBAY MKTPLC EU XCMIHF 125,38-\n17.01. 18.01. MITGLIEDSBEITRAG ZEUS BODYPOWER 22,73-\n19.01. 20.01. BEITRAG Allianz SE K-59657589 54,35-\n22.01. 23.01. KARTENZAHLUNG ARAL TANKSTELLE 64,16\nKONTOSTAND AM 27.01.2025 341,04\n\nIHR NAECHSTER ABRECHNUNGSTERMIN 01.02.2025\n",
@@ -233,8 +260,17 @@
       "image_path": "bank statement generator\\bank_statements\\statement_103.png",
       "image_name": "statement_103.png",
       "ocr_confidence": 90.28070175438596,
-      "extracted_count": 3,
+      "extracted_count": 4,
       "transactions": [
+        {
+          "date1": "21.03",
+          "date2": "22.03",
+          "formatted_date": "21.03.2025",
+          "amount_str": "84,26",
+          "amount_value": 84.26,
+          "description": "ABSCHLAG STROM Stadtwerke Rosenheim 51398189",
+          "raw_line": "21.03. 22.03. ABSCHLAG STROM Stadtwerke Rosenheim 51398189 84,26-"
+        },
         {
           "date1": "22.03",
           "date2": "23.03",
@@ -316,8 +352,26 @@
       "image_path": "bank statement generator\\bank_statements\\statement_105.png",
       "image_name": "statement_105.png",
       "ocr_confidence": 86.67924528301887,
-      "extracted_count": 2,
+      "extracted_count": 4,
       "transactions": [
+        {
+          "date1": "02.04",
+          "date2": "03.04",
+          "formatted_date": "02.04.2025",
+          "amount_str": "37.56",
+          "amount_value": 37.56,
+          "description": "RECHNUNG VODAFONE GMBH 28610624",
+          "raw_line": "02.04. 03.04. RECHNUNG VODAFONE GMBH 28610624 37.56-"
+        },
+        {
+          "date1": "04.04",
+          "date2": "05.04",
+          "formatted_date": "04.04.2025",
+          "amount_str": "85.84",
+          "amount_value": 85.84,
+          "description": "ABSCHLAG STROM Stadtwerke Rosenheim 90847551",
+          "raw_line": "04.04. 05.04. ABSCHLAG STROM Stadtwerke Rosenheim 90847551 85.84-"
+        },
         {
           "date1": "08.04",
           "date2": "09.04",
@@ -344,7 +398,7 @@
       "image_path": "bank statement generator\\bank_statements\\statement_106.png",
       "image_name": "statement_106.png",
       "ocr_confidence": 89.47058823529412,
-      "extracted_count": 3,
+      "extracted_count": 4,
       "transactions": [
         {
           "date1": "11.03",
@@ -365,6 +419,15 @@
           "raw_line": "15.03. 16.03. PAYPAL ONYYII 46,87-"
         },
         {
+          "date1": "18.03",
+          "date2": "19.03",
+          "formatted_date": "18.03.2025",
+          "amount_str": "41,24",
+          "amount_value": 41.24,
+          "description": "RECHNUNG VODAFONE GMBH 67612252",
+          "raw_line": "18.03. 19.03. RECHNUNG VODAFONE GMBH 67612252 41,24-"
+        },
+        {
           "date1": "22.03",
           "date2": "23.03",
           "formatted_date": "22.03.2025",
@@ -381,7 +444,7 @@
       "image_path": "bank statement generator\\bank_statements\\statement_107.png",
       "image_name": "statement_107.png",
       "ocr_confidence": 91.92,
-      "extracted_count": 2,
+      "extracted_count": 3,
       "transactions": [
         {
           "date1": "19.06",
@@ -400,6 +463,15 @@
           "amount_value": 22.52,
           "description": "MITGLIEDSBEITRAG ZEUS BODYPOWER",
           "raw_line": "26.06. 27.06. MITGLIEDSBEITRAG ZEUS BODYPOWER 22,52-"
+        },
+        {
+          "date1": "30.06",
+          "date2": "01.07",
+          "formatted_date": "30.06.2025",
+          "amount_str": "87,14",
+          "amount_value": 87.14,
+          "description": "ABSCHLAG STROM Stadtwerke Rosenheim 38446754",
+          "raw_line": "30.06. 01.07. ABSCHLAG STROM Stadtwerke Rosenheim 38446754 87,14-"
         }
       ],
       "raw_ocr_text": "@ MasterCard Engin AUSZUG 107\n\"267041356247526 Peukert BLATT 1\nBELEG VALUTA BESCHREIBUNG BETRAG IN EURO\nKONTOSTAND AM 17.06.2024\n19.06. 20.06. MCDONALDS Quedlinburg 41,40-\n23,06. 24,06. RECHNUNG VODAFONE GMBH 61192826 40,20-\n26.06. 27.06. MITGLIEDSBEITRAG ZEUS BODYPOWER 22,52-\n30.06. 01.07. ABSCHLAG STROM Stadtwerke Rosenheim 38446754 87,14\nKONTOSTAND AM 03.07.2024 191,26.\nIHR NAECHSTER ABRECHNUNGSTERMIN 13.07.2024\n",
@@ -409,7 +481,7 @@
       "image_path": "bank statement generator\\bank_statements\\statement_108.png",
       "image_name": "statement_108.png",
       "ocr_confidence": 89.72727272727273,
-      "extracted_count": 3,
+      "extracted_count": 5,
       "transactions": [
         {
           "date1": "25.04",
@@ -428,6 +500,24 @@
           "amount_value": 75.78,
           "description": "KARTENZAHLUNG SHELL TANKSTELLE",
           "raw_line": "26.04. 27.04. KARTENZAHLUNG SHELL TANKSTELLE 75,78-"
+        },
+        {
+          "date1": "27.04",
+          "date2": "28.04",
+          "formatted_date": "27.04.2025",
+          "amount_str": "53.04",
+          "amount_value": 53.04,
+          "description": "BEITRAG Allianz SE K-76710437",
+          "raw_line": "27.04. 28.04. BEITRAG Allianz SE K-76710437 53.04-"
+        },
+        {
+          "date1": "28.04",
+          "date2": "29.04",
+          "formatted_date": "28.04.2025",
+          "amount_str": "30.04",
+          "amount_value": 30.04,
+          "description": "MITGLIEDSBEITRAG ZEUS BODYPOWER 25,.77-",
+          "raw_line": "28.04. 29.04. MITGLIEDSBEITRAG ZEUS BODYPOWER 25,.77- 30.04-"
         },
         {
           "date1": "03.05",
@@ -556,16 +646,25 @@
       "image_path": "bank statement generator\\bank_statements\\statement_110.png",
       "image_name": "statement_110.png",
       "ocr_confidence": 91.33333333333333,
-      "extracted_count": 2,
+      "extracted_count": 4,
       "transactions": [
         {
-          "date1": "25.41",
-          "date2": "24.10",
-          "formatted_date": "25.41.2025",
+          "date1": "20.10",
+          "date2": "21.10",
+          "formatted_date": "20.10.2025",
+          "amount_str": "25.41",
+          "amount_value": 25.41,
+          "description": "MITGLIEDSBEITRAG ZEUS BODYPOWER",
+          "raw_line": "20.10. 21.10. MITGLIEDSBEITRAG ZEUS BODYPOWER 25.41-"
+        },
+        {
+          "date1": "24.10",
+          "date2": "25.10",
+          "formatted_date": "24.10.2025",
           "amount_str": "126,81",
           "amount_value": 126.81,
-          "description": "25.10. KARTENZ./24.10 ALDI SUED RO",
-          "raw_line": "25.41. 24.10. 25.10. KARTENZ./24.10 ALDI SUED RO 126,81-"
+          "description": "KARTENZ./24.10 ALDI SUED RO",
+          "raw_line": "24.10. 25.10. KARTENZ./24.10 ALDI SUED RO 126,81-"
         },
         {
           "date1": "27.10",
@@ -575,6 +674,15 @@
           "amount_value": 86.36,
           "description": "ABSCHLAG STROM Stadtwerke Rosenheim 74785072",
           "raw_line": "27.10. 28.10. ABSCHLAG STROM Stadtwerke Rosenheim 74785072 86.36-"
+        },
+        {
+          "date1": "25.41",
+          "date2": "24.10",
+          "formatted_date": "25.41.2025",
+          "amount_str": "126,81",
+          "amount_value": 126.81,
+          "description": "25.10. KARTENZ./24.10 ALDI SUED RO",
+          "raw_line": "25.41. 24.10. 25.10. KARTENZ./24.10 ALDI SUED RO 126,81-"
         }
       ],
       "raw_ocr_text": "@ MasterCard Engin AUSZUG 110\n\"267041356247526 Peukert BLATT 1\nBELEG VALUTA BESCHREIBUNG BETRAG IN EURO\n\nKONTOSTAND AM 18.10.2024\n20.10. 21.10. MITGLIEDSBEITRAG ZEUS BODYPOWER 25.41.\n24.10. 25.10. KARTENZ./24.10 ALDI SUED RO 126,81-\n27.10. 28.10. ABSCHLAG STROM Stadtwerke Rosenheim 74785072 86.36-\nKONTOSTAND AM 30.10.2024 238,58-\n\nIHR NAECHSTER ABRECHNUNGSTERMIN 04.11.2024\n",
@@ -658,7 +766,7 @@
       "image_path": "bank statement generator\\bank_statements\\statement_113.png",
       "image_name": "statement_113.png",
       "ocr_confidence": 87.546875,
-      "extracted_count": 5,
+      "extracted_count": 6,
       "transactions": [
         {
           "date1": "09.02",
@@ -688,6 +796,15 @@
           "raw_line": "13.02. 14.02. KARTENZAHLUNG SHELL TANKSTELLE 54,75-"
         },
         {
+          "date1": "16.02",
+          "date2": "17.02",
+          "formatted_date": "16.02.2025",
+          "amount_str": "90.44",
+          "amount_value": 90.44,
+          "description": "PAYPAL EQGDON",
+          "raw_line": "16.02. 17.02. PAYPAL EQGDON 90.44-"
+        },
+        {
           "date1": "20.02",
           "date2": "21.02",
           "formatted_date": "20.02.2025",
@@ -713,7 +830,7 @@
       "image_path": "bank statement generator\\bank_statements\\statement_114.png",
       "image_name": "statement_114.png",
       "ocr_confidence": 90.71153846153847,
-      "extracted_count": 3,
+      "extracted_count": 4,
       "transactions": [
         {
           "date1": "01.06",
@@ -723,6 +840,15 @@
           "amount_value": 42.4,
           "description": "RECHNUNG VODAFONE GMBH 92808503",
           "raw_line": "01.06. 02.06. RECHNUNG VODAFONE GMBH 92808503 42.40-"
+        },
+        {
+          "date1": "03.06",
+          "date2": "04.06",
+          "formatted_date": "03.06.2025",
+          "amount_str": "23,44",
+          "amount_value": 23.44,
+          "description": "MITGLIEDSBEITRAG ZEUS BODYPOWER",
+          "raw_line": "03.06. 04.06. MITGLIEDSBEITRAG ZEUS BODYPOWER 23,44-"
         },
         {
           "date1": "04.06",
@@ -1044,7 +1170,7 @@
       "image_path": "bank statement generator\\bank_statements\\statement_120.png",
       "image_name": "statement_120.png",
       "ocr_confidence": 92.10169491525424,
-      "extracted_count": 4,
+      "extracted_count": 5,
       "transactions": [
         {
           "date1": "29.03",
@@ -1072,6 +1198,15 @@
           "amount_value": 41.68,
           "description": "RECHNUNG VODAFONE GMBH 23222813",
           "raw_line": "02.04. 03.04. RECHNUNG VODAFONE GMBH 23222813 41,68-"
+        },
+        {
+          "date1": "04.04",
+          "date2": "05.04",
+          "formatted_date": "04.04.2025",
+          "amount_str": "55,54",
+          "amount_value": 55.54,
+          "description": "BEITRAG Allianz SE K-41036249",
+          "raw_line": "04.04. 05.04. BEITRAG Allianz SE K-41036249 55,54-"
         },
         {
           "date1": "06.04",
@@ -1164,8 +1299,17 @@
       "image_path": "bank statement generator\\bank_statements\\statement_123.png",
       "image_name": "statement_123.png",
       "ocr_confidence": 85.9090909090909,
-      "extracted_count": 2,
+      "extracted_count": 3,
       "transactions": [
+        {
+          "date1": "08.09",
+          "date2": "09.09",
+          "formatted_date": "08.09.2025",
+          "amount_str": "84,20",
+          "amount_value": 84.2,
+          "description": "EBAY MKTPLC EU QDEQEE",
+          "raw_line": "08.09. 09.09. EBAY MKTPLC EU QDEQEE 84,20-"
+        },
         {
           "date1": "10.09",
           "date2": "11.09",
@@ -1293,8 +1437,18 @@
       "image_path": "bank statement generator\\bank_statements\\statement_126.png",
       "image_name": "statement_126.png",
       "ocr_confidence": 88.67441860465117,
-      "extracted_count": 0,
-      "transactions": [],
+      "extracted_count": 1,
+      "transactions": [
+        {
+          "date1": "26.06",
+          "date2": "27.06",
+          "formatted_date": "26.06.2025",
+          "amount_str": "28.06",
+          "amount_value": 28.06,
+          "description": "KARTENZ./26.06 REWE RO ThT3",
+          "raw_line": "26.06. 27.06. KARTENZ./26.06 REWE RO ThT3 28.06-"
+        }
+      ],
       "raw_ocr_text": "@ MasterCard Engin AUSZUG 126\n\"267041356247526 Peukert BLATT 1\nBELEG VALUTA BESCHREIBUNG BETRAG IN EURO\n\nKONTOSTAND AM 24.06.2025\n26.06. 27.06. KARTENZ./26.06 REWE RO ThT3\n28.06. 29.06. ABSCHLAG STROM Stadtwerke Rosenheim 19066606 84.74\n01.07. 02.07. PAYPAL XZIUAW 14,.50-\nKONTOSTAND AM 04.07.2025 176,97-\n\nIHR NAECHSTER ABRECHNUNGSTERMIN 11.07.2025\n",
       "success": true
     },
@@ -1302,7 +1456,7 @@
       "image_path": "bank statement generator\\bank_statements\\statement_127.png",
       "image_name": "statement_127.png",
       "ocr_confidence": 87.80357142857143,
-      "extracted_count": 4,
+      "extracted_count": 6,
       "transactions": [
         {
           "date1": "31.10",
@@ -1323,13 +1477,22 @@
           "raw_line": "01.11. 02.11. MCDONALDS Gutersloh 34,71-"
         },
         {
-          "date1": "86.64",
+          "date1": "02.11",
           "date2": "03.11",
-          "formatted_date": "86.64.2025",
+          "formatted_date": "02.11.2025",
+          "amount_str": "86.64",
+          "amount_value": 86.64,
+          "description": "KARTENZ./02.11 EDEKARO",
+          "raw_line": "02.11. 03.11. KARTENZ./02.11 EDEKARO 86.64-"
+        },
+        {
+          "date1": "03.11",
+          "date2": "04.11",
+          "formatted_date": "03.11.2025",
           "amount_str": "53,31",
           "amount_value": 53.31,
-          "description": "04.11. BEITRAG Allianz SE K-96355586",
-          "raw_line": "86.64. 03.11. 04.11. BEITRAG Allianz SE K-96355586 53,31-"
+          "description": "BEITRAG Allianz SE K-96355586",
+          "raw_line": "03.11. 04.11. BEITRAG Allianz SE K-96355586 53,31-"
         },
         {
           "date1": "06.11",
@@ -1339,6 +1502,15 @@
           "amount_value": 84.57,
           "description": "KARTENZAHLUNG SHELL TANKSTELLE",
           "raw_line": "06.11. 07.11. KARTENZAHLUNG SHELL TANKSTELLE 84,57-"
+        },
+        {
+          "date1": "86.64",
+          "date2": "03.11",
+          "formatted_date": "86.64.2025",
+          "amount_str": "53,31",
+          "amount_value": 53.31,
+          "description": "04.11. BEITRAG Allianz SE K-96355586",
+          "raw_line": "86.64. 03.11. 04.11. BEITRAG Allianz SE K-96355586 53,31-"
         }
       ],
       "raw_ocr_text": "@ MasterCard Engin AUSZUG 127\n\")267041356247526 Peukert BLATT 1\nBELEG VALUTA BESCHREIBUNG BETRAG IN EURO\nKONTOSTAND AM 30.10.2023\n31.10. 01.11. KARTENZAHLUNG SHELL TANKSTELLE 80.84-\n01.11. 02.11. MCDONALDS Gutersloh 34,71-\n02.11. 03.11. KARTENZ./02.11 EDEKARO 86.64.\n03.11. 04.11. BEITRAG Allianz SE K-96355586 53,31-\n06.11. 07.11. KARTENZAHLUNG SHELL TANKSTELLE 84,57-\nKONTOSTAND AM 10.11.2023 340.07-\n\nIHR NAECHSTER ABRECHNUNGSTERMIN 16.11.2023\n",
@@ -1431,8 +1603,17 @@
       "image_path": "bank statement generator\\bank_statements\\statement_13.png",
       "image_name": "statement_13.png",
       "ocr_confidence": 89.55813953488372,
-      "extracted_count": 2,
+      "extracted_count": 3,
       "transactions": [
+        {
+          "date1": "09.03",
+          "date2": "10.03",
+          "formatted_date": "09.03.2025",
+          "amount_str": "68,84",
+          "amount_value": 68.84,
+          "description": "PAYPAL KLKIIA",
+          "raw_line": "09.03. 10.03. PAYPAL KLKIIA 68,84-"
+        },
         {
           "date1": "11.03",
           "date2": "12.03",
@@ -1459,8 +1640,17 @@
       "image_path": "bank statement generator\\bank_statements\\statement_130.png",
       "image_name": "statement_130.png",
       "ocr_confidence": 89.03846153846153,
-      "extracted_count": 3,
+      "extracted_count": 4,
       "transactions": [
+        {
+          "date1": "09.02",
+          "date2": "10.02",
+          "formatted_date": "09.02.2025",
+          "amount_str": "86,24",
+          "amount_value": 86.24,
+          "description": "ABSCHLAG STROM Stadtwerke Rosenheim 47676190",
+          "raw_line": "09.02. 10.02. ABSCHLAG STROM Stadtwerke Rosenheim 47676190 86,24-"
+        },
         {
           "date1": "10.02",
           "date2": "11.02",
@@ -1496,7 +1686,7 @@
       "image_path": "bank statement generator\\bank_statements\\statement_131.png",
       "image_name": "statement_131.png",
       "ocr_confidence": 89.1086956521739,
-      "extracted_count": 2,
+      "extracted_count": 3,
       "transactions": [
         {
           "date1": "01.12",
@@ -1506,6 +1696,15 @@
           "amount_value": 86.06,
           "description": "ABSCHLAG STROM Stadtwerke Rosenheim 45089378",
           "raw_line": "01.12. 02.12. ABSCHLAG STROM Stadtwerke Rosenheim 45089378 86,06-"
+        },
+        {
+          "date1": "04.12",
+          "date2": "05.12",
+          "formatted_date": "04.12.2025",
+          "amount_str": "39,14",
+          "amount_value": 39.14,
+          "description": "BURGER KING Berchtesgaden",
+          "raw_line": "04.12. 05.12. BURGER KING Berchtesgaden 39,14-"
         },
         {
           "date1": "05.12",
@@ -1744,7 +1943,7 @@
       "image_path": "bank statement generator\\bank_statements\\statement_136.png",
       "image_name": "statement_136.png",
       "ocr_confidence": 90.29850746268657,
-      "extracted_count": 4,
+      "extracted_count": 6,
       "transactions": [
         {
           "date1": "15.09",
@@ -1765,6 +1964,15 @@
           "raw_line": "17.09. 18.09. MITGLIEDSBEITRAG ZEUS BODYPOWER 27,47-"
         },
         {
+          "date1": "20.09",
+          "date2": "21.09",
+          "formatted_date": "20.09.2025",
+          "amount_str": "246,63",
+          "amount_value": 246.63,
+          "description": "EBAY MKTPLC EU OEXQQM",
+          "raw_line": "20.09. 21.09. EBAY MKTPLC EU OEXQQM 246,63-"
+        },
+        {
           "date1": "21.09",
           "date2": "22.09",
           "formatted_date": "21.09.2025",
@@ -1781,6 +1989,15 @@
           "amount_value": 83.97,
           "description": "ABSCHLAG STROM Stadtwerke Rosenheim 73448328",
           "raw_line": "24.09. 25.09. ABSCHLAG STROM Stadtwerke Rosenheim 73448328 83.97-"
+        },
+        {
+          "date1": "27.09",
+          "date2": "28.09",
+          "formatted_date": "27.09.2025",
+          "amount_str": "38,24",
+          "amount_value": 38.24,
+          "description": "RECHNUNG VODAFONE GMBH 20808658",
+          "raw_line": "27.09. 28.09. RECHNUNG VODAFONE GMBH 20808658 38,24-"
         }
       ],
       "raw_ocr_text": "@ MasterCard Engin AUSZUG 136\n\")267041356247526 Peukert BLATT 1\nBELEG VALUTA BESCHREIBUNG BETRAG IN EURO\nKONTOSTAND AM 13.09.2023\n15.09. 16.09. BEITRAG Allianz SE K-10647864 57.61-\n17.09. 18.09. MITGLIEDSBEITRAG ZEUS BODYPOWER 27,47-\n20.09. 21.09. EBAY MKTPLC EU OEXQQM 246,63.\n21.09. 22.09. KARTENZ./21.09 REWE RO 141.47-\n24.09. 25.09. ABSCHLAG STROM Stadtwerke Rosenheim 73448328 83.97-\n27.09. 28.09. RECHNUNG VODAFONE GMBH 20808658 38,24\nKONTOSTAND AM 29.09.2023 595,39-\n\nIHR NAECHSTER ABRECHNUNGSTERMIN 07.10.2023\n",
@@ -1882,7 +2099,7 @@
       "image_path": "bank statement generator\\bank_statements\\statement_139.png",
       "image_name": "statement_139.png",
       "ocr_confidence": 88.11538461538461,
-      "extracted_count": 2,
+      "extracted_count": 4,
       "transactions": [
         {
           "date1": "03.12",
@@ -1894,6 +2111,15 @@
           "raw_line": "03.12. 04.12. BEITRAG Allianz SE K-75704880 52.81-"
         },
         {
+          "date1": "05.12",
+          "date2": "06.12",
+          "formatted_date": "05.12.2025",
+          "amount_str": "60,34",
+          "amount_value": 60.34,
+          "description": "KARTENZ./05.12 LIDL RO",
+          "raw_line": "05.12. 06.12. KARTENZ./05.12 LIDL RO 60,34-"
+        },
+        {
           "date1": "09.12",
           "date2": "10.12",
           "formatted_date": "09.12.2025",
@@ -1901,6 +2127,15 @@
           "amount_value": 35.45,
           "description": "MCDONALDS Bad Mergentheim",
           "raw_line": "09.12. 10.12. MCDONALDS Bad Mergentheim 35.45-"
+        },
+        {
+          "date1": "13.12",
+          "date2": "14.12",
+          "formatted_date": "13.12.2025",
+          "amount_str": "84,22",
+          "amount_value": 84.22,
+          "description": "ABSCHLAG STROM Stadtwerke Rosenheim 16490150",
+          "raw_line": "13.12. 14.12. ABSCHLAG STROM Stadtwerke Rosenheim 16490150 84,22-"
         }
       ],
       "raw_ocr_text": "@ MasterCard Engin AUSZUG 139\n\"267041356247526 Peukert BLATT 1\nBELEG VALUTA BESCHREIBUNG BETRAG IN EURO\nKONTOSTAND AM 29.11.2023\n03.12. 04.12. BEITRAG Allianz SE K-75704880 52.81-\n05.12. 06.12. KARTENZ./05.12 LIDL RO 60,34.\n09.12. 10.12. MCDONALDS Bad Mergentheim 35.45-\n13.12. 14.12. ABSCHLAG STROM Stadtwerke Rosenheim 16490150 84,22.\nKONTOSTAND AM 16.12.2023 232,82-\nIHR NAECHSTER ABRECHNUNGSTERMIN 26.12.2023\n",
@@ -1910,8 +2145,17 @@
       "image_path": "bank statement generator\\bank_statements\\statement_14.png",
       "image_name": "statement_14.png",
       "ocr_confidence": 89.69090909090909,
-      "extracted_count": 4,
+      "extracted_count": 5,
       "transactions": [
+        {
+          "date1": "03.04",
+          "date2": "04.04",
+          "formatted_date": "03.04.2025",
+          "amount_str": "106,57",
+          "amount_value": 106.57,
+          "description": "KARTENZ./03.04 REWE RO",
+          "raw_line": "03.04. 04.04. KARTENZ./03.04 REWE RO 106,57-"
+        },
         {
           "date1": "06.04",
           "date2": "07.04",
@@ -1993,7 +2237,7 @@
       "image_path": "bank statement generator\\bank_statements\\statement_141.png",
       "image_name": "statement_141.png",
       "ocr_confidence": 90.11940298507463,
-      "extracted_count": 4,
+      "extracted_count": 6,
       "transactions": [
         {
           "date1": "22.03",
@@ -2014,6 +2258,15 @@
           "raw_line": "26.03. 27.03. MITGLIEDSBEITRAG ZEUS BODYPOWER 24,81-"
         },
         {
+          "date1": "29.03",
+          "date2": "30.03",
+          "formatted_date": "29.03.2025",
+          "amount_str": "39.04",
+          "amount_value": 39.04,
+          "description": "RECHNUNG VODAFONE GMBH 4045357",
+          "raw_line": "29.03. 30.03. RECHNUNG VODAFONE GMBH 4045357 39.04-"
+        },
+        {
           "date1": "02.04",
           "date2": "03.04",
           "formatted_date": "02.04.2025",
@@ -2030,6 +2283,15 @@
           "amount_value": 103.33,
           "description": "ZALANDO MKTPLC EU MNILCQ",
           "raw_line": "06.04. 07.04. ZALANDO MKTPLC EU MNILCQ 103.33-"
+        },
+        {
+          "date1": "09.04",
+          "date2": "10.04",
+          "formatted_date": "09.04.2025",
+          "amount_str": "85.04",
+          "amount_value": 85.04,
+          "description": "ABSCHLAG STROM Stadtwerke Rosenheim 79485379",
+          "raw_line": "09.04. 10.04. ABSCHLAG STROM Stadtwerke Rosenheim 79485379 85.04-"
         }
       ],
       "raw_ocr_text": "@ MasterCard Engin AUSZUG 141\n\")267041356247526 Peukert BLATT 1\nBELEG VALUTA BESCHREIBUNG BETRAG IN EURO\nKONTOSTAND AM 18.03.2025\n22.03. 23.03. BURGER KING Ochsenfurt 36.51-\n26.03. 27.03. MITGLIEDSBEITRAG ZEUS BODYPOWER 24,81-\n29.03. 30.03. RECHNUNG VODAFONE GMBH 4045357 39.04\n02.04. 03.04. KARTENZAHLUNG ARAL TANKSTELLE 50.88-\n06.04. 07.04. ZALANDO MKTPLC EU MNILCQ 103.33-\n09.04. 10.04. ABSCHLAG STROM Stadtwerke Rosenheim 79485379 85.04\nKONTOSTAND AM 14.04.2025 339,61-\n\nIHR NAECHSTER ABRECHNUNGSTERMIN 23.04.2025\n",
@@ -2265,6 +2527,15 @@
       "raw_line": "25.01. 26.01. ZALANDO MKTPLC EU ELNKWL 114,71-"
     },
     {
+      "date1": "27.01",
+      "date2": "28.01",
+      "formatted_date": "27.01.2025",
+      "amount_str": "54,16",
+      "amount_value": 54.16,
+      "description": "BEITRAG Allianz SE K-12945226",
+      "raw_line": "27.01. 28.01. BEITRAG Allianz SE K-12945226 54,16-"
+    },
+    {
       "date1": "29.01",
       "date2": "30.01",
       "formatted_date": "29.01.2025",
@@ -2281,6 +2552,15 @@
       "amount_value": 13.67,
       "description": "BURGER KING Neustadt am Ribenberge",
       "raw_line": "30.01. 31.01. BURGER KING Neustadt am Ribenberge 13.67-"
+    },
+    {
+      "date1": "11.01",
+      "date2": "12.01",
+      "formatted_date": "11.01.2025",
+      "amount_str": "74,42",
+      "amount_value": 74.42,
+      "description": "KARTENZAHLUNG SHELL TANKSTELLE",
+      "raw_line": "11.01. 12.01. KARTENZAHLUNG SHELL TANKSTELLE 74,42-"
     },
     {
       "date1": "13.01",
@@ -2308,6 +2588,24 @@
       "amount_value": 54.35,
       "description": "BEITRAG Allianz SE K-59657589",
       "raw_line": "19.01. 20.01. BEITRAG Allianz SE K-59657589 54,35-"
+    },
+    {
+      "date1": "22.01",
+      "date2": "23.01",
+      "formatted_date": "22.01.2025",
+      "amount_str": "64,16",
+      "amount_value": 64.16,
+      "description": "KARTENZAHLUNG ARAL TANKSTELLE",
+      "raw_line": "22.01. 23.01. KARTENZAHLUNG ARAL TANKSTELLE 64,16-"
+    },
+    {
+      "date1": "21.03",
+      "date2": "22.03",
+      "formatted_date": "21.03.2025",
+      "amount_str": "84,26",
+      "amount_value": 84.26,
+      "description": "ABSCHLAG STROM Stadtwerke Rosenheim 51398189",
+      "raw_line": "21.03. 22.03. ABSCHLAG STROM Stadtwerke Rosenheim 51398189 84,26-"
     },
     {
       "date1": "22.03",
@@ -2373,6 +2671,24 @@
       "raw_line": "18.09. 19.09. PAYPAL NEUSUO 92,45-"
     },
     {
+      "date1": "02.04",
+      "date2": "03.04",
+      "formatted_date": "02.04.2025",
+      "amount_str": "37.56",
+      "amount_value": 37.56,
+      "description": "RECHNUNG VODAFONE GMBH 28610624",
+      "raw_line": "02.04. 03.04. RECHNUNG VODAFONE GMBH 28610624 37.56-"
+    },
+    {
+      "date1": "04.04",
+      "date2": "05.04",
+      "formatted_date": "04.04.2025",
+      "amount_str": "85.84",
+      "amount_value": 85.84,
+      "description": "ABSCHLAG STROM Stadtwerke Rosenheim 90847551",
+      "raw_line": "04.04. 05.04. ABSCHLAG STROM Stadtwerke Rosenheim 90847551 85.84-"
+    },
+    {
       "date1": "08.04",
       "date2": "09.04",
       "formatted_date": "08.04.2025",
@@ -2409,6 +2725,15 @@
       "raw_line": "15.03. 16.03. PAYPAL ONYYII 46,87-"
     },
     {
+      "date1": "18.03",
+      "date2": "19.03",
+      "formatted_date": "18.03.2025",
+      "amount_str": "41,24",
+      "amount_value": 41.24,
+      "description": "RECHNUNG VODAFONE GMBH 67612252",
+      "raw_line": "18.03. 19.03. RECHNUNG VODAFONE GMBH 67612252 41,24-"
+    },
+    {
       "date1": "22.03",
       "date2": "23.03",
       "formatted_date": "22.03.2025",
@@ -2436,6 +2761,15 @@
       "raw_line": "26.06. 27.06. MITGLIEDSBEITRAG ZEUS BODYPOWER 22,52-"
     },
     {
+      "date1": "30.06",
+      "date2": "01.07",
+      "formatted_date": "30.06.2025",
+      "amount_str": "87,14",
+      "amount_value": 87.14,
+      "description": "ABSCHLAG STROM Stadtwerke Rosenheim 38446754",
+      "raw_line": "30.06. 01.07. ABSCHLAG STROM Stadtwerke Rosenheim 38446754 87,14-"
+    },
+    {
       "date1": "25.04",
       "date2": "26.04",
       "formatted_date": "25.04.2025",
@@ -2452,6 +2786,24 @@
       "amount_value": 75.78,
       "description": "KARTENZAHLUNG SHELL TANKSTELLE",
       "raw_line": "26.04. 27.04. KARTENZAHLUNG SHELL TANKSTELLE 75,78-"
+    },
+    {
+      "date1": "27.04",
+      "date2": "28.04",
+      "formatted_date": "27.04.2025",
+      "amount_str": "53.04",
+      "amount_value": 53.04,
+      "description": "BEITRAG Allianz SE K-76710437",
+      "raw_line": "27.04. 28.04. BEITRAG Allianz SE K-76710437 53.04-"
+    },
+    {
+      "date1": "28.04",
+      "date2": "29.04",
+      "formatted_date": "28.04.2025",
+      "amount_str": "30.04",
+      "amount_value": 30.04,
+      "description": "MITGLIEDSBEITRAG ZEUS BODYPOWER 25,.77-",
+      "raw_line": "28.04. 29.04. MITGLIEDSBEITRAG ZEUS BODYPOWER 25,.77- 30.04-"
     },
     {
       "date1": "03.05",
@@ -2553,13 +2905,22 @@
       "raw_line": "23.09. 24.09. MITGLIEDSBEITRAG ZEUS BODYPOWER 27.06-"
     },
     {
-      "date1": "25.41",
-      "date2": "24.10",
-      "formatted_date": "25.41.2025",
+      "date1": "20.10",
+      "date2": "21.10",
+      "formatted_date": "20.10.2025",
+      "amount_str": "25.41",
+      "amount_value": 25.41,
+      "description": "MITGLIEDSBEITRAG ZEUS BODYPOWER",
+      "raw_line": "20.10. 21.10. MITGLIEDSBEITRAG ZEUS BODYPOWER 25.41-"
+    },
+    {
+      "date1": "24.10",
+      "date2": "25.10",
+      "formatted_date": "24.10.2025",
       "amount_str": "126,81",
       "amount_value": 126.81,
-      "description": "25.10. KARTENZ./24.10 ALDI SUED RO",
-      "raw_line": "25.41. 24.10. 25.10. KARTENZ./24.10 ALDI SUED RO 126,81-"
+      "description": "KARTENZ./24.10 ALDI SUED RO",
+      "raw_line": "24.10. 25.10. KARTENZ./24.10 ALDI SUED RO 126,81-"
     },
     {
       "date1": "27.10",
@@ -2569,6 +2930,15 @@
       "amount_value": 86.36,
       "description": "ABSCHLAG STROM Stadtwerke Rosenheim 74785072",
       "raw_line": "27.10. 28.10. ABSCHLAG STROM Stadtwerke Rosenheim 74785072 86.36-"
+    },
+    {
+      "date1": "25.41",
+      "date2": "24.10",
+      "formatted_date": "25.41.2025",
+      "amount_str": "126,81",
+      "amount_value": 126.81,
+      "description": "25.10. KARTENZ./24.10 ALDI SUED RO",
+      "raw_line": "25.41. 24.10. 25.10. KARTENZ./24.10 ALDI SUED RO 126,81-"
     },
     {
       "date1": "29.12",
@@ -2652,6 +3022,15 @@
       "raw_line": "13.02. 14.02. KARTENZAHLUNG SHELL TANKSTELLE 54,75-"
     },
     {
+      "date1": "16.02",
+      "date2": "17.02",
+      "formatted_date": "16.02.2025",
+      "amount_str": "90.44",
+      "amount_value": 90.44,
+      "description": "PAYPAL EQGDON",
+      "raw_line": "16.02. 17.02. PAYPAL EQGDON 90.44-"
+    },
+    {
       "date1": "20.02",
       "date2": "21.02",
       "formatted_date": "20.02.2025",
@@ -2677,6 +3056,15 @@
       "amount_value": 42.4,
       "description": "RECHNUNG VODAFONE GMBH 92808503",
       "raw_line": "01.06. 02.06. RECHNUNG VODAFONE GMBH 92808503 42.40-"
+    },
+    {
+      "date1": "03.06",
+      "date2": "04.06",
+      "formatted_date": "03.06.2025",
+      "amount_str": "23,44",
+      "amount_value": 23.44,
+      "description": "MITGLIEDSBEITRAG ZEUS BODYPOWER",
+      "raw_line": "03.06. 04.06. MITGLIEDSBEITRAG ZEUS BODYPOWER 23,44-"
     },
     {
       "date1": "04.06",
@@ -2958,6 +3346,15 @@
       "raw_line": "02.04. 03.04. RECHNUNG VODAFONE GMBH 23222813 41,68-"
     },
     {
+      "date1": "04.04",
+      "date2": "05.04",
+      "formatted_date": "04.04.2025",
+      "amount_str": "55,54",
+      "amount_value": 55.54,
+      "description": "BEITRAG Allianz SE K-41036249",
+      "raw_line": "04.04. 05.04. BEITRAG Allianz SE K-41036249 55,54-"
+    },
+    {
       "date1": "06.04",
       "date2": "07.04",
       "formatted_date": "06.04.2025",
@@ -3019,6 +3416,15 @@
       "amount_value": 10.05,
       "description": "PAYPAL HGUUL!",
       "raw_line": "01.10. 02.10. PAYPAL HGUUL! 10,05-"
+    },
+    {
+      "date1": "08.09",
+      "date2": "09.09",
+      "formatted_date": "08.09.2025",
+      "amount_str": "84,20",
+      "amount_value": 84.2,
+      "description": "EBAY MKTPLC EU QDEQEE",
+      "raw_line": "08.09. 09.09. EBAY MKTPLC EU QDEQEE 84,20-"
     },
     {
       "date1": "10.09",
@@ -3120,6 +3526,15 @@
       "raw_line": "29.09. 30.09. KARTENZ./29.09 EDEKA RO 133.65-"
     },
     {
+      "date1": "26.06",
+      "date2": "27.06",
+      "formatted_date": "26.06.2025",
+      "amount_str": "28.06",
+      "amount_value": 28.06,
+      "description": "KARTENZ./26.06 REWE RO ThT3",
+      "raw_line": "26.06. 27.06. KARTENZ./26.06 REWE RO ThT3 28.06-"
+    },
+    {
       "date1": "31.10",
       "date2": "01.11",
       "formatted_date": "31.10.2025",
@@ -3138,13 +3553,22 @@
       "raw_line": "01.11. 02.11. MCDONALDS Gutersloh 34,71-"
     },
     {
-      "date1": "86.64",
+      "date1": "02.11",
       "date2": "03.11",
-      "formatted_date": "86.64.2025",
+      "formatted_date": "02.11.2025",
+      "amount_str": "86.64",
+      "amount_value": 86.64,
+      "description": "KARTENZ./02.11 EDEKARO",
+      "raw_line": "02.11. 03.11. KARTENZ./02.11 EDEKARO 86.64-"
+    },
+    {
+      "date1": "03.11",
+      "date2": "04.11",
+      "formatted_date": "03.11.2025",
       "amount_str": "53,31",
       "amount_value": 53.31,
-      "description": "04.11. BEITRAG Allianz SE K-96355586",
-      "raw_line": "86.64. 03.11. 04.11. BEITRAG Allianz SE K-96355586 53,31-"
+      "description": "BEITRAG Allianz SE K-96355586",
+      "raw_line": "03.11. 04.11. BEITRAG Allianz SE K-96355586 53,31-"
     },
     {
       "date1": "06.11",
@@ -3154,6 +3578,15 @@
       "amount_value": 84.57,
       "description": "KARTENZAHLUNG SHELL TANKSTELLE",
       "raw_line": "06.11. 07.11. KARTENZAHLUNG SHELL TANKSTELLE 84,57-"
+    },
+    {
+      "date1": "86.64",
+      "date2": "03.11",
+      "formatted_date": "86.64.2025",
+      "amount_str": "53,31",
+      "amount_value": 53.31,
+      "description": "04.11. BEITRAG Allianz SE K-96355586",
+      "raw_line": "86.64. 03.11. 04.11. BEITRAG Allianz SE K-96355586 53,31-"
     },
     {
       "date1": "25.10",
@@ -3219,6 +3652,15 @@
       "raw_line": "03.04. 04.04. AMAZON.DE MKTPLC EU SOPPCK 113,62-"
     },
     {
+      "date1": "09.03",
+      "date2": "10.03",
+      "formatted_date": "09.03.2025",
+      "amount_str": "68,84",
+      "amount_value": 68.84,
+      "description": "PAYPAL KLKIIA",
+      "raw_line": "09.03. 10.03. PAYPAL KLKIIA 68,84-"
+    },
+    {
       "date1": "11.03",
       "date2": "12.03",
       "formatted_date": "11.03.2025",
@@ -3235,6 +3677,15 @@
       "amount_value": 38.18,
       "description": "RECHNUNG VODAFONE GMBH 18605008",
       "raw_line": "14.03. 15.03. RECHNUNG VODAFONE GMBH 18605008 38,18-"
+    },
+    {
+      "date1": "09.02",
+      "date2": "10.02",
+      "formatted_date": "09.02.2025",
+      "amount_str": "86,24",
+      "amount_value": 86.24,
+      "description": "ABSCHLAG STROM Stadtwerke Rosenheim 47676190",
+      "raw_line": "09.02. 10.02. ABSCHLAG STROM Stadtwerke Rosenheim 47676190 86,24-"
     },
     {
       "date1": "10.02",
@@ -3271,6 +3722,15 @@
       "amount_value": 86.06,
       "description": "ABSCHLAG STROM Stadtwerke Rosenheim 45089378",
       "raw_line": "01.12. 02.12. ABSCHLAG STROM Stadtwerke Rosenheim 45089378 86,06-"
+    },
+    {
+      "date1": "04.12",
+      "date2": "05.12",
+      "formatted_date": "04.12.2025",
+      "amount_str": "39,14",
+      "amount_value": 39.14,
+      "description": "BURGER KING Berchtesgaden",
+      "raw_line": "04.12. 05.12. BURGER KING Berchtesgaden 39,14-"
     },
     {
       "date1": "05.12",
@@ -3480,6 +3940,15 @@
       "raw_line": "17.09. 18.09. MITGLIEDSBEITRAG ZEUS BODYPOWER 27,47-"
     },
     {
+      "date1": "20.09",
+      "date2": "21.09",
+      "formatted_date": "20.09.2025",
+      "amount_str": "246,63",
+      "amount_value": 246.63,
+      "description": "EBAY MKTPLC EU OEXQQM",
+      "raw_line": "20.09. 21.09. EBAY MKTPLC EU OEXQQM 246,63-"
+    },
+    {
       "date1": "21.09",
       "date2": "22.09",
       "formatted_date": "21.09.2025",
@@ -3496,6 +3965,15 @@
       "amount_value": 83.97,
       "description": "ABSCHLAG STROM Stadtwerke Rosenheim 73448328",
       "raw_line": "24.09. 25.09. ABSCHLAG STROM Stadtwerke Rosenheim 73448328 83.97-"
+    },
+    {
+      "date1": "27.09",
+      "date2": "28.09",
+      "formatted_date": "27.09.2025",
+      "amount_str": "38,24",
+      "amount_value": 38.24,
+      "description": "RECHNUNG VODAFONE GMBH 20808658",
+      "raw_line": "27.09. 28.09. RECHNUNG VODAFONE GMBH 20808658 38,24-"
     },
     {
       "date1": "22.06",
@@ -3579,6 +4057,15 @@
       "raw_line": "03.12. 04.12. BEITRAG Allianz SE K-75704880 52.81-"
     },
     {
+      "date1": "05.12",
+      "date2": "06.12",
+      "formatted_date": "05.12.2025",
+      "amount_str": "60,34",
+      "amount_value": 60.34,
+      "description": "KARTENZ./05.12 LIDL RO",
+      "raw_line": "05.12. 06.12. KARTENZ./05.12 LIDL RO 60,34-"
+    },
+    {
       "date1": "09.12",
       "date2": "10.12",
       "formatted_date": "09.12.2025",
@@ -3586,6 +4073,24 @@
       "amount_value": 35.45,
       "description": "MCDONALDS Bad Mergentheim",
       "raw_line": "09.12. 10.12. MCDONALDS Bad Mergentheim 35.45-"
+    },
+    {
+      "date1": "13.12",
+      "date2": "14.12",
+      "formatted_date": "13.12.2025",
+      "amount_str": "84,22",
+      "amount_value": 84.22,
+      "description": "ABSCHLAG STROM Stadtwerke Rosenheim 16490150",
+      "raw_line": "13.12. 14.12. ABSCHLAG STROM Stadtwerke Rosenheim 16490150 84,22-"
+    },
+    {
+      "date1": "03.04",
+      "date2": "04.04",
+      "formatted_date": "03.04.2025",
+      "amount_str": "106,57",
+      "amount_value": 106.57,
+      "description": "KARTENZ./03.04 REWE RO",
+      "raw_line": "03.04. 04.04. KARTENZ./03.04 REWE RO 106,57-"
     },
     {
       "date1": "06.04",
@@ -3669,6 +4174,15 @@
       "raw_line": "26.03. 27.03. MITGLIEDSBEITRAG ZEUS BODYPOWER 24,81-"
     },
     {
+      "date1": "29.03",
+      "date2": "30.03",
+      "formatted_date": "29.03.2025",
+      "amount_str": "39.04",
+      "amount_value": 39.04,
+      "description": "RECHNUNG VODAFONE GMBH 4045357",
+      "raw_line": "29.03. 30.03. RECHNUNG VODAFONE GMBH 4045357 39.04-"
+    },
+    {
       "date1": "02.04",
       "date2": "03.04",
       "formatted_date": "02.04.2025",
@@ -3685,6 +4199,15 @@
       "amount_value": 103.33,
       "description": "ZALANDO MKTPLC EU MNILCQ",
       "raw_line": "06.04. 07.04. ZALANDO MKTPLC EU MNILCQ 103.33-"
+    },
+    {
+      "date1": "09.04",
+      "date2": "10.04",
+      "formatted_date": "09.04.2025",
+      "amount_str": "85.04",
+      "amount_value": 85.04,
+      "description": "ABSCHLAG STROM Stadtwerke Rosenheim 79485379",
+      "raw_line": "09.04. 10.04. ABSCHLAG STROM Stadtwerke Rosenheim 79485379 85.04-"
     },
     {
       "date1": "28.10",

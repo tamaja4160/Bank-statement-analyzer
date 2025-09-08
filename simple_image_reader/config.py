@@ -17,10 +17,14 @@ ADAPTIVE_THRESH_C = 2
 
 # Transaction parsing patterns
 TRANSACTION_PATTERNS = [
-    # Pattern 1: Single line format - DD.MM. DD.MM. DESCRIPTION AMOUNT-
-    r'(\d{1,2}\.\d{1,2})\.\s+(\d{1,2}\.\d{1,2})\.\s+(.+?)\s+(\d+[,\.]\d{1,2})-',
+    # Pattern 1: Single line format - DD.MM. DD.MM. DESCRIPTION AMOUNT- (flexible ending)
+    r'(\d{1,2}\.\d{1,2})\.\s+(\d{1,2}\.\d{1,2})\.\s+(.+?)\s+(\d+[,\.]\d{1,2})[-\.\s]*',
     
-    # Pattern 2: Compact single line - DD.MM. DD.MM. DESCRIPTION AMOUNT-
+    # Pattern 2: Compact single line - DD.MM. DD.MM. DESCRIPTION AMOUNT- (flexible ending)
+    r'(\d{1,2}\.\d{1,2})\.\s*(\d{1,2}\.\d{1,2})\.\s*(.+?)\s+(\d+[,\.]\d{1,2})[-\.\s]*',
+    
+    # Pattern 3: Original strict patterns for backup
+    r'(\d{1,2}\.\d{1,2})\.\s+(\d{1,2}\.\d{1,2})\.\s+(.+?)\s+(\d+[,\.]\d{1,2})-',
     r'(\d{1,2}\.\d{1,2})\.\s*(\d{1,2}\.\d{1,2})\.\s*(.+?)\s+(\d+[,\.]\d{1,2})-',
 ]
 
