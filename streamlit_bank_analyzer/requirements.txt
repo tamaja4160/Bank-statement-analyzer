@@ -5,6 +5,24 @@ streamlit==1.28.1
 pandas==2.1.4
 numpy==1.24.3
 
+# Machine Learning for payment analysis
+scikit-learn==1.3.2
+
+# Advanced NLP with Transformers
+transformers==4.36.2
+sentence-transformers==2.2.2
+torch==2.1.2
+
+# Production-Ready Microservice
+fastapi==0.104.1
+uvicorn==0.24.0
+pydantic==2.5.0
+
+# Advanced ML Algorithms
+lightgbm==4.1.0
+xgboost==2.0.2
+catboost==1.2.2
+
 # Image processing and OCR (from simple_image_reader)
 opencv-python==4.8.1.78
 pytesseract==0.3.10
