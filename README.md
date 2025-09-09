@@ -75,6 +75,13 @@ pip install -r requirements.txt
 Each project can be run independently. See individual README files for detailed instructions.
 
 ### Quick Start
+Run the complete suite:
+```bash
+python run.py
+```
+
+Or use individual components:
+
 1. Generate sample statements:
 ```bash
 cd bank-statement-generator
@@ -84,13 +91,12 @@ python statement_generator.py
 2. Extract transactions via OCR:
 ```bash
 cd simple_image_reader
-python main.py ../bank-statement-generator/bank_statements/
+python simple_image_reader.py ../bank-statement-generator/bank_statements/
 ```
 
 3. Run the full analysis app:
 ```bash
-cd streamlit_bank_analyzer
-streamlit run app.py
+python run.py
 ```
 
 ## Technology Stack
