@@ -10,7 +10,7 @@ Get started immediately with the primary use cases.
 
 ### 1\. Create Clean Bank Statement Images
 
-Generate realistic German bank statements (Excel & PNG) to test financial software, train OCR, and benchmark ML models.
+Generate realistic German bank statements (PNG) to test financial software, train OCR, and benchmark ML models.
 
 ```bash
 # Generate clean, realistic-looking bank statements
@@ -54,7 +54,7 @@ python run.py
 
 ## ✨ Key Features
 
-  * **AI-Powered OCR**: Extracts transaction data with **96% accuracy**, even from blurry or distorted images, using Tesseract and OpenCV.
+  * **AI-Powered OCR**: Extracts transaction data with **98% accuracy** using Tesseract and OpenCV.
   * **Recurring Payment Detection**: Automatically identifies subscriptions and regular charges with **85%+ accuracy** using fuzzy matching, similarity scoring, and clustering.
   * **Synthetic Data Generation**: Creates realistic German bank statements in both Excel and PNG formats, perfect for training and testing.
   * **Image Augmentation**: Programmatically applies blur, rotation, and perspective changes to images to create a robust test set for OCR models.
