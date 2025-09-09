@@ -95,7 +95,7 @@ This project is structured as a complete FinTech product pipeline, demonstrating
 
 ## 📈 Performance Metrics
 
-  * **OCR Accuracy**: 96% extraction success rate.
+  * **OCR Accuracy**: 98% extraction success rate.
   * **Processing Speed**: \~2-3 seconds per statement.
   * **Analysis Accuracy**: 85%+ recurring payment detection.
   * **Success Rate**: 80%+ overall workflow completion.
