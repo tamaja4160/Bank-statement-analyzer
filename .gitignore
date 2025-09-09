@@ -1,0 +1,47 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+env/
+venv/
+.venv/
+ENV/
+
+# Environment variables
+.env
+.env.local
+
+# IDEs
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Session data
+streamlit_sessions/
+**/streamlit_sessions/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Excel temp files
+~$*.xlsx
+
+# Git
+.git/
+
+# Large binaries
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
