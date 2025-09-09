@@ -217,7 +217,7 @@ def generate_statements_for_name(name: str, num_statements: int = 10) -> list:
             )
 
             # Create Excel file
-            template_path = os.path.join(os.path.dirname(__file__), "..", "bank statement generator", "template.xlsx")
+            template_path = os.path.join(os.path.dirname(__file__), "..", "bank-statement-generator", "template.xlsx")
             wb = load_workbook(template_path)
             ws = wb.active
 

@@ -280,12 +280,12 @@ def main():
         print("  python ground_truth_comparison.py <image_path>")
         print("")
         print("Examples:")
-        print("  python ground_truth_comparison.py \"bank statement generator/bank_statements\" 10")
+        print("  python ground_truth_comparison.py \"bank-statement-generator/bank_statements\" 10")
         print("  python ground_truth_comparison.py 1")
         print("  python ground_truth_comparison.py \"path/to/statement_1.png\"")
         return
     
-    ground_truth_path = "bank statement generator/bank_statements/ground_truth.csv"
+    ground_truth_path = "bank-statement-generator/bank_statements/ground_truth.csv"
     comparator = GroundTruthComparison(ground_truth_path)
     
     arg = sys.argv[1]
@@ -316,7 +316,7 @@ def main():
     elif arg.isdigit():
         # Statement ID provided
         statement_id = int(arg)
-        image_path = Path(f"bank statement generator/bank_statements/statement_{statement_id}.png")
+        image_path = Path(f"bank-statement-generator/bank_statements/statement_{statement_id}.png")
         
         if not image_path.exists():
             print(f"Image not found: {image_path}")
