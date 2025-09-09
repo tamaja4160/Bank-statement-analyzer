@@ -5,8 +5,8 @@ import random
 import glob
 
 # --- CONFIGURATION ---
-INPUT_DIR = "bank statement generator/bank_statements"
-OUTPUT_DIR = "image worsener/hard_to_read_images"
+INPUT_DIR = "bank_statements"
+OUTPUT_DIR = "hard_to_read_images"
 
 # Adjust the intensity of the effects here
 ROTATION_RANGE = (-5, 5)  # Degrees
@@ -22,7 +22,7 @@ def augment_image(image):
     """
     h, w = image.shape[:2]
     augmented_image = image.copy()
-    
+
     # Define a white background for borders created by transformations
     border_color = (255, 255, 255)
 
@@ -30,14 +30,14 @@ def augment_image(image):
     src_points = np.float32([[0, 0], [w, 0], [w, h], [0, h]])
     max_shift_x = int(w * PERSPECTIVE_RANGE)
     max_shift_y = int(h * PERSPECTIVE_RANGE)
-    
+
     dst_points = np.float32([
         [random.randint(0, max_shift_x), random.randint(0, max_shift_y)],
         [w - random.randint(1, max_shift_x), random.randint(0, max_shift_y)],
         [w - random.randint(1, max_shift_x), h - random.randint(1, max_shift_y)],
         [random.randint(0, max_shift_x), h - random.randint(1, max_shift_y)]
     ])
-    
+
     perspective_matrix = cv2.getPerspectiveTransform(src_points, dst_points)
     augmented_image = cv2.warpPerspective(augmented_image, perspective_matrix, (w, h), borderValue=border_color)
 
@@ -71,19 +71,19 @@ def main():
     Main function to find images, apply augmentations, and save them.
     """
     print("🚀 Starting image augmentation...")
-    
+
     os.makedirs(OUTPUT_DIR, exist_ok=True)
-    
+
     image_paths = glob.glob(os.path.join(INPUT_DIR, "*.png")) + \
                   glob.glob(os.path.join(INPUT_DIR, "*.jpg")) + \
                   glob.glob(os.path.join(INPUT_DIR, "*.jpeg"))
-                       
+
     if not image_paths:
         print(f"❌ No images found in the '{INPUT_DIR}' folder.")
         return
-        
+
     print(f"Found {len(image_paths)} images to process.")
-    
+
     for i, img_path in enumerate(image_paths):
         try:
             image = cv2.imread(img_path)
@@ -92,18 +92,18 @@ def main():
                 continue
 
             augmented_image = augment_image(image)
-            
+
             basename = os.path.basename(img_path)
             filename, ext = os.path.splitext(basename)
             output_filename = f"{filename}_aug_{i+1}.png"
             output_path = os.path.join(OUTPUT_DIR, output_filename)
-            
+
             cv2.imwrite(output_path, augmented_image)
             print(f"✅ Successfully created: {output_path}")
 
         except Exception as e:
             print(f"❌ Failed to process {img_path}: {e}")
-            
+
     print(f"\n🎉 Augmentation complete! Check the '{OUTPUT_DIR}' folder.")
 
 if __name__ == "__main__":

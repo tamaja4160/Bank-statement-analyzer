@@ -18,8 +18,8 @@ from transaction_data import RECURRING_PAYMENTS, ONE_OFF_PAYMENTS, GERMAN_CITIES
 
 # Configuration
 NUM_STATEMENTS = 20
-OUTPUT_DIR = Path("bank statement generator/bank_statements")
-TEMPLATE_FILE = Path("bank statement generator/template.xlsx")
+OUTPUT_DIR = Path("bank_statements")
+TEMPLATE_FILE = Path("template.xlsx")
 GROUND_TRUTH_CSV = OUTPUT_DIR / "ground_truth.csv"
 
 # Template layout constants
@@ -35,10 +35,10 @@ def select_recurring_payments(num_transactions):
     """Select recurring payments for the statement."""
     guaranteed = []
     if random.random() < 0.6:  # 60% chance for Vodafone
-        vodafone = next(p for p in RECURRING_PAYMENTS if p["partner"] == "VODAFONE GMBH")
+        vodafone = next(p for p in RECURRING_PAYMENTS if p["partner"] == "Vodafone")
         guaranteed.append(vodafone)
 
-    remaining = [p for p in RECURRING_PAYMENTS if p["partner"] != "VODAFONE GMBH"]
+    remaining = [p for p in RECURRING_PAYMENTS if p["partner"] != "Vodafone"]
     num_additional = random.randint(0, min(len(remaining), num_transactions - len(guaranteed)))
     guaranteed.extend(random.sample(remaining, num_additional))
 
@@ -188,7 +188,7 @@ def convert_excel_to_image(excel_path, image_path):
         image_range = f"A1:F{NEXT_BILLING_ROW + 1}"
         wb = load_workbook(excel_path)
         ws_title = wb.active.title
-        excel2img.export_img(excel_path, image_path, ws_title, image_range)
+        excel2img.export_img(str(excel_path), str(image_path), ws_title, image_range)
         print(f"📸 Successfully saved image: {image_path}")
         return True
     except Exception as e:
@@ -213,7 +213,16 @@ def main():
         print(f"❌ Error: Template file '{TEMPLATE_FILE}' not found.")
         return
 
-    print("🚀 Starting bank statement generation...")
+    try:
+        num_statements = int(input("How many bank statements do you want to generate? "))
+        if num_statements <= 0:
+            print("❌ Number must be positive.")
+            return
+    except ValueError:
+        print("❌ Invalid number. Please enter a valid integer.")
+        return
+
+    print(f"🚀 Starting bank statement generation for {num_statements} statements...")
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
     fake = Faker('de_DE')
@@ -225,7 +234,7 @@ def main():
 
     all_ground_truth_data = []
 
-    for i in range(1, NUM_STATEMENTS + 1):
+    for i in range(1, num_statements + 1):
         excel_path = OUTPUT_DIR / f"statement_{i}.xlsx"
         image_path = OUTPUT_DIR / f"statement_{i}.png"
 
@@ -236,7 +245,7 @@ def main():
         print()
 
     save_ground_truth_data(all_ground_truth_data)
-    print(f"🎉 All {NUM_STATEMENTS} statements generated in the '{OUTPUT_DIR}' folder.")
+    print(f"🎉 All {num_statements} statements generated in the '{OUTPUT_DIR}' folder.")
 
 
 if __name__ == "__main__":

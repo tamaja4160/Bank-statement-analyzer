@@ -1,3 +1,5 @@
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 # Bank Statement Suite: Save Time, Money & Boost Revenue 🚀
 
 **Bank statement analysis just got effortless!** Whether you're a **customer** looking to automatically track expenses and identify recurring payments, or a **company** wanting to improve your financial products, this suite delivers:
@@ -81,6 +83,8 @@ This project is a practical manifestation of the skills CHECK24 is looking for:
 - **Real banking data processing** with German financial formats
 - **Advanced ML techniques** including transformers and sentence embeddings
 - **Cross-component integration** showing collaborative development skills
+- **Interactive Data Generation** using terminal prompts for customizable outputs
+- **Image Augmentation Pipeline** for robust OCR model training under challenging conditions
 
 ## 🚀 Getting Started: Your First ML Product Launch
 
@@ -117,8 +121,8 @@ After working through this project, you'll have:
 ### Setup
 1. Clone the repository:
 ```bash
-git clone https://github.com/tamaja4160/Projects.git
-cd Projects
+git clone https://github.com/tamaja4160/Bank-statement-analyzer.git
+cd Bank-statement-analyzer
 ```
 
 2. Install dependencies:
@@ -130,32 +134,51 @@ pip install -r requirements.txt
 
 ## Usage
 
-Each project can be run independently. See individual README files for detailed instructions.
+### For Companies: Generate Synthetic Data for ML Training
 
-### Quick Start
-Run the complete suite:
-```bash
-python run.py
-```
-
-Or use individual components:
-
-1. Generate sample statements:
+#### Generate Images of Realistic-Looking Bank Statements
+If you need synthetic data for training OCR models or testing financial software:
 ```bash
 cd bank-statement-generator
 python statement_generator.py
+# Enter number of statements when prompted (e.g., 10)
 ```
+This creates Excel files and PNG images of authentic German bank statements.
 
-2. Extract transactions via OCR:
+#### Create Hard-to-Read Image Statements
+To test your OCR robustness under challenging conditions:
 ```bash
-cd simple_image_reader
-python simple_image_reader.py ../bank-statement-generator/bank_statements/
+cd bank-statement-generator
+python image_worsener.py
 ```
+This applies rotations, blurs, perspective changes, and other augmentations to create varied image quality for ML benchmarking.
 
-3. Run the full analysis app:
+### For Users: Analyze Personal Bank Statements
+
+#### Generate Personal Statements & Analyze Recurring Payments
+To automatically track expenses, identify subscriptions, and find ways to save money:
+```bash
+# Generate test statements
+cd bank-statement-generator
+python statement_generator.py
+
+# Extract transaction data from images
+cd ../simple_image_reader
+python simple_image_reader.py ../bank-statement-generator/bank_statements/
+
+# Full analysis with ML recurring payment detection
+cd ../streamlit_bank_analyzer
+python app.py
+```
+The ML pipeline will show spending patterns, highlight recurring charges, and suggest opportunities to save money.
+
+### Quick Start (Full Suite)
+Run the complete integrated pipeline:
 ```bash
 python run.py
 ```
+
+Each component can be run independently for specific use cases.
 
 ## Technology Stack
 
@@ -170,14 +193,14 @@ python run.py
 ## Architecture
 
 ```
-bank-statement-suite/
-├── bank-statement-generator/     # XLSX/PNG generation
-├── image-worsener/              # Image augmentation
-├── simple_image_reader/         # OCR extraction
-├── streamlit_bank_analyzer/     # Full analysis app
-├── requirements.txt             # Dependencies
-├── .gitignore                   # Git ignore rules
-└── README.md                    # This file
+bank-statement-analyzer/
+├── bank-statement-generator/     # XLSX/PNG generation & image augmentation
+├── simple_image_reader/          # OCR extraction
+├── streamlit_bank_analyzer/      # ML analysis & API
+├── .venv/                        # Virtual environment (check .gitignore)
+├── requirements.txt              # Dependencies
+├── .gitignore                    # Git ignore rules
+└── README.md                     # This file
 ```
 
 ## Performance Metrics
