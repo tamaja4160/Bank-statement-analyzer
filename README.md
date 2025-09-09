@@ -1,6 +1,6 @@
 [](https://opensource.org/licenses/MIT)
 
-# Bank Statement Suite: Save Time, Money & Boost Revenue 💲
+# Bank Statement Suite: Save Time, Money & Boost Revenue
 
 An end-to-end suite for effortless bank statement analysis. Automate expense tracking for personal finance, generate synthetic data for testing, and uncover financial insights with powerful ML tools.
 
