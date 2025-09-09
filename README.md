@@ -8,6 +8,26 @@
 
 ### 🎯 What You Can Do With It:
 
+### What This Suite Adds That Wasn't There Before:
+
+Imagine you have a pile of bank statement images. Before, you'd have to:
+
+- Manually type in all the transactions (very boring and slow)
+- Miss important details like duplicate subscriptions
+- Struggle with blurry images where you can hardly read the text
+
+Now, with this suite:
+
+**What it does:**
+- **Reads images automatically**: Uses AI to read even blurry bank statements perfectly
+- **Finds patterns you miss**: Spots recurring payments like your credit card bill every month
+- **Helps you save money**: Alerts you to charges that seem unusual or subscriptions you're not using
+- **Creates new data**: Makes realistic fake bank statements for testing your software
+
+**Example improvement:**
+Before: Spending 2 hours manually entering transactions for one month = boredom + mistakes
+After: Upload image, wait 10 seconds, get organized data + savings suggestions = easy + smart
+
 **Generate Bank Statements:**
 - Create realistic German banking data with authentic transaction patterns
 - Perfect for testing financial software and ML algorithms
