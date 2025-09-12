@@ -2,11 +2,11 @@
 
 # Bank Statement Suite: Save Time, Money & Boost Revenue
 
-I created a tool that generates bank statements and reads them using OCR, find recurring payments and suggests cheaper alternatives (all based on synthetic data).
+I created a tool that generates bank statements and reads them using OCR, finds recurring payment,s and suggests cheaper alternatives (all based on synthetic data).
 
 ## What It Does & How to Use It
 
-Get started immediately with the primary use cases.
+You can start immediately with the primary use cases.
 
 ### 1\. Create Clean Bank Statement Images
 
@@ -34,7 +34,7 @@ python image_worsener.py
 
 ### 3\. Analyze Bank Statements and Save Money
 
-Automatically track expenses, identify subscriptions, and find ways to save money. Run the entire pipeline from data generation to analysis with a single command and view the results in an interactive dashboard.
+Simulate tracking expenses, identifying subscriptions, and finding ways to save money. Run the entire pipeline from data generation to analysis with a single command and view the results in an interactive dashboard.
 
 Access it under this address: http://localhost:8501/
 
@@ -82,23 +82,11 @@ This project is structured as a complete FinTech product pipeline, demonstrating
       * **What it is:** An end-to-end ML pipeline for recurring payment detection, complete with a UI.
       * **Skills developed:** Fuzzy matching, similarity scoring, clustering, and integrating ML models into a cohesive product.
 
-## 🔥 Project Highlights That Impress Employers
-
-  * **End-to-end ML pipeline** from data ingestion to visualization.
-  * **Production-ready FastAPI service** for easy integration.
-  * **Interactive Streamlit dashboard** demonstrating user-centric design.
-  * **Real-world data processing** with German financial formats.
-  * **Advanced ML techniques** including transformers and sentence embeddings.
-  * **Cross-component integration** showing strong development skills.
-
------
-
 ## 📈 Performance Metrics
 
   * **OCR Accuracy**: 98% extraction success rate.
   * **Processing Speed**: \~2-3 seconds per statement.
   * **Analysis Accuracy**: 85%+ recurring payment detection.
-  * **Success Rate**: 80%+ overall workflow completion.
 
 ## Installation
 
