@@ -2,7 +2,7 @@
 
 # Bank Statement Suite: Save Time, Money & Boost Revenue
 
-An end-to-end suite for effortless bank statement analysis. Automate expense tracking for personal finance, generate synthetic data for testing, and uncover financial insights with powerful ML tools.
+I created a tool that generates bank statements and reads them using OCR, find recurring payments and suggests cheaper alternatives (all based on synthetic data).
 
 ## What It Does & How to Use It
 
